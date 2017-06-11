@@ -1,0 +1,53 @@
+<h1>Circulars
+<button type="button" class="btn btn-success btn-circle" [routerLink]="['/add-circular']">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</button>
+</h1>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Circulars</div>
+
+  <!-- Table -->
+  <div class="panel-body">
+    <div style="text-align: center" *ngIf="EmptyCirculars"><b>No Circular added to View</b></div>
+    <table class="table table-hover" *ngIf="!EmptyCirculars">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Start At</th>
+          <th>Created By</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let circular of circulars"> 
+        <tr data-toggle="collapse" [attr.data-target]="'#' + circular.id">
+          <td>{{circular.title}}</td>
+          <td>{{circular.start}}</td>
+          <td>{{circular.employeeName}}</td>
+          <td><span [style.background]="circular.circularTypeColor" class="badge">{{circular.circularTypeName}}</span></td>
+        </tr>
+        <tr [attr.id]="circular.id" class="collapse">
+          <td colspan="5" style="border:none;">
+            <b>Description : </b>{{circular.description}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row text-center">
+      <loader [condition]="loader"></loader>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <!--<nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="{'disabled': currentPage === 1}"><a class="page-link" (click)="previousCircular()">Previous</a></li>
+        <li class="page-item"><a class="page-link active">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item" [ngClass]="{'disabled': EmptyCirculars}"><a class="page-link" (click)="nextCircular()">Next</a></li>
+      </ul>
+    </nav>-->
+    <button (click)="previousCircular()" class="btn btn-danger nav-btn right" [disabled]="currentPage === 1">Previous</button>
+    <button (click)="nextCircular()" class="btn right btn-danger nav-btn" [disabled]="EmptyCirculars || noMore">Next</button>    
+  </div>
+</div>

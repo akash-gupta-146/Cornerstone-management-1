@@ -1,0 +1,54 @@
+<div class="tab-pane">
+  <div class="panel panel-default">
+    <!--<div class="panel-heading">Current Homework</div>-->
+    <div class="panel-body" id="accordion">
+      <div style="text-align: center" *ngIf="EmptyHomeworks" ><b>No New Homework</b></div>
+      <table class="table table-hover" *ngIf="!EmptyHomeworks" >
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Subject</th>
+            <th>Created on</th>
+            <th>Standard</th>
+            <th>Due Date</th>            
+          </tr>
+        </thead>
+        <tbody *ngFor="let a of homeworks; let i = index;" class="container-border">
+          <tr data-toggle="collapse" [attr.data-target]="'#' + a.id" data-parent="#accordion">
+            <td class="action">{{a.id}}</td>
+            <td>{{a.subjectName}}</td>
+            <td>{{a.createdAt | date: 'shortDate'}}</td>
+            <td>{{ a.standardName }}</td>
+            <td>{{a.dueDate}} {{a.dueMonth}}</td>
+          </tr>
+          <tr [attr.id]="a.id" class="collapse">
+            <td colspan="5" style="border:none;">
+              <b>Description : </b>{{a.description}}
+              <br>
+              <span *ngIf="a.fileOriginalName">
+              <b>Attachment  : </b><a href="{{fileUrl + a.fileTimestamp}}">{{a.fileOriginalName}}</a>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row text-center">
+        <loader [condition]="loader"></loader>
+      </div>
+    </div>
+    
+    <div class="panel-footer">
+      <!--<nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" [ngClass]="{'disabled': currentPage === 1}"><a class="page-link" (click)="previousHomework()" >Previous</a></li>
+          <li class="page-item"><a class="page-link active" >1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item" [ngClass]="{'disabled': EmptyHomeworks}"><a class="page-link" (click)="nextHomework()" >Next</a></li>
+        </ul>
+      </nav>-->
+      <button type="button" (click)="previousHomework()" [disabled]="currentPage === 1" class="btn btn-danger">Previous</button>
+      <button type="button" (click)="nextHomework()" [disabled]="EmptyHomeworks || noMore" class="btn btn-danger">Next</button>
+    </div>
+  </div>
+</div>

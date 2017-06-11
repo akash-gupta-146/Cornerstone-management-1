@@ -1,0 +1,119 @@
+/*loader*/
+
+/*===============*/
+
+body{
+    background: #ddd;
+}
+
+/* Modal */
+/*.modal-header{
+background: #ea212e;
+}*/
+.modal-title{
+    float: left;
+}
+
+/* Active list color */
+ul.nav.nav-tabs{
+    border: 1px solid #ea212e !important;
+}
+ul.nav.nav-tabs li a{
+    color:black;
+}
+li.active a{
+    background: #ea212e !important;
+    color:white !important;
+    font-weight:bold;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    background: #ea212e !important; /* Light Red Color */
+    color:white !important;
+}
+.panel-default>.panel-heading{
+    color: #fff;
+    background-color: #ea212e;
+}
+.pagination>li>a, .pagination>li>span{
+    color:#ea212e;
+}
+a{
+    color:#ea212e;
+}
+
+/*modal css*/
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/*adding border in homework and circular*/
+.container-border{
+  width: 100%;
+  border-style: solid;
+  border-color:#cacacc;
+}
+
+.modal-header{
+    background:#ea212e;
+    color:white;
+    box-shadow: 0 0 10px black;
+}
+.modal-footer{
+     background: #e1e1e1;
+     box-shadow: 0 0 10px black;
+}
+.btn-circle{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
+
+  .glyphicon-calendar:before{
+    font-size: 20px;
+    padding-right: 10px;
+}
+.badge{
+    background-color: #ea212e;
+}
+.img-center{
+    position:absolute;
+    left:50%; 
+    top:50%;
+    display:block; margin:auto;
+}
+.logout-icon{
+    font-size: 30px;
+}
+.logout{
+
+}
+.logo-list{
+    position: absolute !important;
+    right:10px;;
+    top: 5px;
+}
+.logo{
+    width: 67px !important;
+    height: auto !important;
+    box-shadow: 0px 5px 12px #616161;
+    border-radius: 100%;
+}

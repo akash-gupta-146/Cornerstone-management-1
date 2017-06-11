@@ -1,0 +1,49 @@
+h1{
+  font-family: 'Inconsolata';
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+.homework > ul{
+  width: 100%;  
+}
+.homework > ul > li{
+  width:50%;
+}
+
+.homework > ul>li.active>a, .homework > ul>li.active>a:focus, .homework > ul>li.active>a:hover {
+    color: #f8f8f8;
+    cursor: pointer;
+    background-color: #337ab7;
+}
+
+.container{
+	border-style: solid;
+	border-color: blue;
+}
+
+form{
+  background-color: white;
+}
+
+.form-group{
+    border-style: none;
+    background-color: inherit;
+}
+.exampleInputFile{
+ background-color:#ea212e;
+ padding: 10px; 
+ border-radius: 5px;
+ color: white;
+ font-family: Arial;
+ font-size: inherit;
+
+}
+.exampleInputFile:hover{
+  background-color:#c51e28;
+  cursor: pointer;
+}
+
+.custom{
+  padding-left: 5px;
+  font-size: 15px;
+}
