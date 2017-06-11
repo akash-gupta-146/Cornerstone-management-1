@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <!--<div class="panel-heading">Current Homework</div>-->
     <div class="panel-body" id="accordion">
-      <div style="text-align: center" *ngIf="EmptyHomeworks" ><b>No New Homework</b></div>
+      <div style="text-align: center" *ngIf="EmptyHomeworks" ><b>No Homework</b></div>
       <table class="table table-hover" *ngIf="!EmptyHomeworks" >
         <thead>
           <tr>
@@ -15,7 +15,7 @@
         </thead>
         <tbody *ngFor="let a of homeworks; let i = index;" class="container-border">
           <tr data-toggle="collapse" [attr.data-target]="'#' + a.id" data-parent="#accordion">
-            <td class="action">{{a.id}}</td>
+            <td class="action"><a>{{a.id}}</a></td>
             <td>{{a.subjectName}}</td>
             <td>{{a.createdAt | date: 'shortDate'}}</td>
             <td>{{ a.standardName }}</td>
