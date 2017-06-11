@@ -10,39 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var circular_component_1 = require("./component/circular/circular.component");
-var complaint_component_1 = require("./component/complaint/complaint.component");
-var dashboard_component_1 = require("./component/dashboard/dashboard.component");
-var homework_component_1 = require("./component/homework/homework.component");
-var login_gaurd_1 = require("./component/login/login.gaurd");
 var AppComponent = (function () {
-    function AppComponent(log) {
-        this.log = log;
-        this.isLoggedIn = false;
-        this.pages = [
-            { title: 'Dashboard', component: dashboard_component_1.DashboardComponent, icon: 'icons/dashboard.png', url: 'dashboard' },
-            { title: 'Complaints', component: complaint_component_1.ComplaintComponent, icon: 'icons/complaint.png', url: 'complaint' },
-            { title: 'Circular', component: circular_component_1.CircularComponent, icon: 'icons/circular.png', url: 'circular' },
-            { title: 'Homework', component: homework_component_1.HomeworkComponent, icon: 'icons/homework.png', url: 'homework/current-homework' }
-        ];
-        console.log("name", log.getData('username'));
+    function AppComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () {
-        if (this.log.isLoggedIn())
-            this.isLoggedIn = true;
-        else
-            this.isLoggedIn = false;
-    };
-    AppComponent.prototype.ngAfterViewInit = function () {
-        $("#wrapper").toggleClass("toggled");
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    };
-    AppComponent.prototype.logout = function () {
-        localStorage.clear();
-    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -51,7 +21,7 @@ AppComponent = __decorate([
         templateUrl: "./app.component.html",
         styleUrls: ["./app.component.css"]
     }),
-    __metadata("design:paramtypes", [login_gaurd_1.LoggedInGuard])
+    __metadata("design:paramtypes", [])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

@@ -33,6 +33,7 @@ export class DashboardComponent {
     // }, (err) => {
     //   console.log(err);
     // });
+    console.log(this.router.url);
   }
 
   onSelected(data:any) {

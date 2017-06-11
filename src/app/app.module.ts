@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { MainComponent } from './component/main/main.component';
 import { LoginComponent } from './component/login/login.component';
 import { ForgotPassword } from './component/login/forgot.password';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -41,6 +42,7 @@ import {XHRBackend, RequestOptions} from '@angular/http';
   ],
   declarations: [
     AppComponent,
+    MainComponent,
     LoginComponent,
     ForgotPassword,
     DashboardComponent,

@@ -13,6 +13,7 @@ var app_routes_1 = require("./app.routes");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
+var main_component_1 = require("./component/main/main.component");
 var login_component_1 = require("./component/login/login.component");
 var forgot_password_1 = require("./component/login/forgot.password");
 var dashboard_component_1 = require("./component/dashboard/dashboard.component");
@@ -53,6 +54,7 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
+            main_component_1.MainComponent,
             login_component_1.LoginComponent,
             forgot_password_1.ForgotPassword,
             dashboard_component_1.DashboardComponent,
