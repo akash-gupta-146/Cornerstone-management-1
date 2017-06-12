@@ -194,8 +194,21 @@ var ComplaintComponent = (function () {
         this.loadFormValue();
     };
     ComplaintComponent.prototype.searchComplaints = function (ev) {
+        var _this = this;
         var val = ev.target.value;
-        // this.cs.searchComplaints(this.currentPage, val)
+        if (val && val.trim() != '') {
+            this.cs.searchComplaints(this.currentPage, { "search": val }).subscribe(function (res) {
+                _this.complaints = res;
+                if (res.status == 204) {
+                    _this.complaints = [];
+                }
+            }, function (error) {
+                console.log("error", error);
+            });
+        }
+        else {
+            this.complaints = this.complaintsCOPY;
+        }
     };
     ComplaintComponent.prototype.getComplaintCommentById = function (complaint) {
         var _this = this;
