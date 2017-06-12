@@ -25,7 +25,6 @@ var MainComponent = (function () {
             { title: 'Circular', component: circular_component_1.CircularComponent, icon: 'icons/circular.png', url: '/circular' },
             { title: 'Homework', component: homework_component_1.HomeworkComponent, icon: 'icons/homework.png', url: '/homework/current-homework' }
         ];
-        console.log("name", log.getData('username'));
     }
     MainComponent.prototype.ngOnInit = function () {
         if (this.log.isLoggedIn())

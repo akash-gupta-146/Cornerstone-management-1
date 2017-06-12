@@ -22,7 +22,6 @@ export class MainComponent implements OnInit, AfterViewInit{
     ];
 
   constructor(public log:LoggedInGuard){
-    console.log("name",log.getData('username'));
   }
 
   ngOnInit(){
