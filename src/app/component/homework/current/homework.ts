@@ -6,7 +6,7 @@ import { HomeworkService } from '../../../providers/homework.service';
 @Component({
   selector: 'current-homework',
   templateUrl: './homework.html',
-  // styleUrls:['../homework.component.css']
+  //styleUrls:['../homework.component.css']
 })
 
 export class CurrentHomework implements OnInit {

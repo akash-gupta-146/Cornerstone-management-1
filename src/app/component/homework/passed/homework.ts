@@ -4,7 +4,7 @@ import { HomeworkService } from '../../../providers/homework.service';
 
 @Component({
   selector: 'passed-homework',
-  // styleUrls:['../homework.component.css'],
+  //styleUrls:['../homework.component.css'],
   templateUrl: './homework.html'
 })
 
