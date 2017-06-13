@@ -31,6 +31,12 @@ var HomeworkAddComponent = (function () {
         this.file = event.srcElement.files[0];
         console.log(this.file);
     };
+    HomeworkAddComponent.prototype.onDueDate = function (e) {
+        if (new Date(e.target.value) < new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())) {
+            alert("Invalid Date");
+            this.homework.controls['dueDate'].patchValue(this.commonService.getTomorrow());
+        }
+    };
     HomeworkAddComponent.prototype.initForm = function () {
         this.homework = new forms_1.FormGroup({
             description: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.maxLength(250)]),

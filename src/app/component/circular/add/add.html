@@ -14,7 +14,7 @@
         <span class="badge">
           <span>{{50 - circular.value.title.length}}</span>
         </span>
-        <input type="email" class="form-control" id="title" formControlName="title" placeholder="Add Title">
+        <input type="text" class="form-control" id="title" maxlength="50" formControlName="title" placeholder="Add Title">
       </div>
       <div class="form-group">
         <label for="description">Description</label>
@@ -41,8 +41,8 @@
       </div>
       <div class="form-group" *ngIf="circular.value.circularTypeId == 2 ">
         <label for="standardIds">Select Class</label>
-        <select class="form-control" id="standardIds" name="standardIds" formControlName="standardIds">
-          <option *ngFor="let a of standards" [ngValue]="a.id"> {{a.name}}</option>
+        <select class="form-control" id="standardIds" name="standardIds" [(ngModel)]="standard" (ngModelChange)="selectStandards($event)" [ngModelOptions]="{standalone: true}" multiple>
+          <option *ngFor="let a of standards" [ngValue]="a"> {{a.name}}</option>
         </select>
       </div>
       <button type="submit" class="btn btn-success" [disabled]="!circular.valid">Submit</button>
