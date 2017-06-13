@@ -7,7 +7,7 @@ declare let $:any;
 @Component({
   selector: 'complaint',
   templateUrl: './complaint.component.html',
-  // styleUrls: ['./complaint.component.css']
+  styleUrls: ['./complaint.component.css']
 })
 export class ComplaintComponent implements OnInit, AfterViewInit {
 

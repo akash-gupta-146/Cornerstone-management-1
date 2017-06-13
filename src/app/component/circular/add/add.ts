@@ -42,7 +42,7 @@ export class AddCircular implements OnInit, AfterViewInit{
       description: new FormControl('', [Validators.required]),
       date: new FormControl(this.commonService.getTomorrow(), [Validators.required]),
       circularTypeId: new FormControl('', []),
-      standardIds: new FormControl([], [Validators.required])
+      // standardIds: new FormControl([], [Validators.required])
     });
   }
 
@@ -87,6 +87,7 @@ export class AddCircular implements OnInit, AfterViewInit{
   public onCircularType(event: any) {
     if (event == "1") {
       this.circular.removeControl("standardIds");
+      this.standard = [];
     } else if (event == "2") {
       this.circular.addControl("standardIds", new FormControl('', [Validators.required]));
     }
@@ -97,6 +98,17 @@ export class AddCircular implements OnInit, AfterViewInit{
     console.log(this.circular.value);
     this.submitProgress = true;
     this.onSubmit();
+  }
+  stdIds:any = [];
+  standard:any;
+  selectStandards(e:any){
+    // this.standard = [];
+    console.log(e);
+    this.stdIds = [];
+    e.forEach((element:any) => {
+      this.stdIds.push(element.id);
+    });
+    this.circular.controls['standardIds'].patchValue(this.stdIds);
   }
 
   public onSubmit() {

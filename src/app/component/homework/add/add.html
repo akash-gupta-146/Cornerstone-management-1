@@ -25,7 +25,7 @@
       <div class="col-sm-12 col-lg-6">
     <div class="form-group">
       <label for="date">Due Date</label>
-      <input class="form-control glyphicon glyphicon-calendar" type="date" max="2019-10-31" displayFormat="DD MMM YYYY" name="duedate" formControlName="duedate" id="duedate">
+      <input class="form-control glyphicon glyphicon-calendar" type="date" max="2019-10-31" displayFormat="DD MMM YYYY" name="dueDate" formControlName="dueDate" (change)="onDueDate($event)" id="duedate">
     </div>
       </div>
       <div class="col-sm-12 col-lg-6">

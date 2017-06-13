@@ -247,6 +247,7 @@ ComplaintComponent = __decorate([
     core_1.Component({
         selector: 'complaint',
         templateUrl: './complaint.component.html',
+        styleUrls: ['./complaint.component.css']
     }),
     __metadata("design:paramtypes", [complaint_service_1.ComplaintService,
         router_1.Router,
