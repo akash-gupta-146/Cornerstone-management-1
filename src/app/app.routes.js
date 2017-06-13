@@ -11,6 +11,7 @@ var add_2 = require("./component/homework/add/add");
 var homework_1 = require("./component/homework/current/homework");
 var homework_2 = require("./component/homework/passed/homework");
 var main_component_1 = require("./component/main/main.component");
+var account_component_1 = require("./component/account/account.component");
 var login_gaurd_1 = require("./component/login/login.gaurd");
 exports.rootRouterConfig = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -32,6 +33,7 @@ exports.rootRouterConfig = [
                 ]
             },
             { path: 'homework-add', component: add_2.HomeworkAddComponent, canActivate: [login_gaurd_1.LoggedInGuard] },
+            { path: 'account', component: account_component_1.AccountComponent }
         ] },
 ];
 //# sourceMappingURL=app.routes.js.map

@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HomeworkService } from '../../../providers/homework.service';
-// import { CustomService } from '../../../providers/custom.service';
+import { Location } from '@angular/common';
 import { CommonService } from '../../../providers/common.service';
 
 declare let $:any;
@@ -22,7 +22,8 @@ export class HomeworkAddComponent implements OnInit{
 
 
   constructor(private homeworkService: HomeworkService,
-              private commonService: CommonService) { }
+              private commonService: CommonService,
+              private _location:Location) { }
 
 
   ngOnInit() {

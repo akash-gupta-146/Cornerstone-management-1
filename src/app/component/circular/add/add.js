@@ -13,10 +13,12 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var circular_service_1 = require("../../../providers/circular.service");
 var common_service_1 = require("../../../providers/common.service");
+var common_1 = require("@angular/common");
 var AddCircular = (function () {
-    function AddCircular(circserv, commonService) {
+    function AddCircular(circserv, commonService, _location) {
         this.circserv = circserv;
         this.commonService = commonService;
+        this._location = _location;
         this.title = 'Add Circular';
         this.submitProgress = false;
         this.stdIds = [];
@@ -120,7 +122,8 @@ AddCircular = __decorate([
         templateUrl: './add.html'
     }),
     __metadata("design:paramtypes", [circular_service_1.CircularService,
-        common_service_1.CommonService])
+        common_service_1.CommonService,
+        common_1.Location])
 ], AddCircular);
 exports.AddCircular = AddCircular;
 //# sourceMappingURL=add.js.map

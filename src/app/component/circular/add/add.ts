@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CircularService } from '../../../providers/circular.service';
 import { CommonService } from '../../../providers/common.service';
+import { Location } from '@angular/common';
 
 declare let $:any;
 
@@ -18,7 +19,8 @@ export class AddCircular implements OnInit, AfterViewInit{
   public circularType:any;
   public submitProgress:boolean = false;
   constructor(private circserv: CircularService,
-              private commonService: CommonService) { }
+              private commonService: CommonService,
+              private _location:Location) { }
 
   ngOnInit() {
     this.circular = this.initForm();

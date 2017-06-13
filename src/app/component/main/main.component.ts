@@ -5,6 +5,8 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HomeworkComponent } from '../homework/homework.component';
 import { LoggedInGuard } from '../login/login.gaurd';
 
+declare let $:any;
+
 @Component({
   selector:'main',
   templateUrl:"./main.component.html",

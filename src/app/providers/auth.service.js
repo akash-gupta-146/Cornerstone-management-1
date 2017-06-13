@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 var common_service_1 = require("./common.service");
 require("rxjs/add/operator/map");
@@ -18,8 +19,9 @@ require("rxjs/add/observable/throw");
 var app_constant_1 = require("./app.constant");
 var default_header_service_1 = require("./default.header.service");
 var AuthService = (function () {
-    function AuthService(http, commonService, con) {
+    function AuthService(http, htttp, commonService, con) {
         this.http = http;
+        this.htttp = htttp;
         this.commonService = commonService;
         this.con = con;
         this.login = false;
@@ -77,6 +79,16 @@ var AuthService = (function () {
         localStorage.setItem('picUrl', data.fileUrl + "/" + data.picTimestamp);
         this.con.setAccessToken();
     };
+    AuthService.prototype.uploadImage = function (data) {
+        var option = new http_1.RequestOptions({
+            headers: new http_1.Headers({
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            })
+        });
+        return this.htttp.post(this.con.baseUrl + "management/" + this.con.getUserId() + "/picture", data, option)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     AuthService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};
@@ -89,6 +101,7 @@ var AuthService = (function () {
 AuthService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [default_header_service_1.CustomHttpService,
+        http_1.Http,
         common_service_1.CommonService,
         app_constant_1.Configuration])
 ], AuthService);

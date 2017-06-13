@@ -12,12 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var homework_service_1 = require("../../../providers/homework.service");
-// import { CustomService } from '../../../providers/custom.service';
+var common_1 = require("@angular/common");
 var common_service_1 = require("../../../providers/common.service");
 var HomeworkAddComponent = (function () {
-    function HomeworkAddComponent(homeworkService, commonService) {
+    function HomeworkAddComponent(homeworkService, commonService, _location) {
         this.homeworkService = homeworkService;
         this.commonService = commonService;
+        this._location = _location;
         this.title = "New Homework";
         this.standards = [];
         this.subjects = [];
@@ -125,7 +126,8 @@ HomeworkAddComponent = __decorate([
         templateUrl: './add.html',
     }),
     __metadata("design:paramtypes", [homework_service_1.HomeworkService,
-        common_service_1.CommonService])
+        common_service_1.CommonService,
+        common_1.Location])
 ], HomeworkAddComponent);
 exports.HomeworkAddComponent = HomeworkAddComponent;
 //# sourceMappingURL=add.js.map
