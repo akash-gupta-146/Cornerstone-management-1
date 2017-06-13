@@ -247,8 +247,8 @@ form button:hover {
 
 
 
-.logo{
-
+.main-logo{
+  height: 100%;
 }
 .head-name{
   color: #2f358f;

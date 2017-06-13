@@ -111,6 +111,7 @@ var ComplaintComponent = (function () {
         var _this = this;
         this.loader = true;
         this.cs.getComplaint(this.url, this.currentPage).subscribe(function (res) {
+            console.log(res);
             _this.onSuccess(res);
         }, function (err) {
             _this.onError(err);
@@ -138,6 +139,9 @@ var ComplaintComponent = (function () {
         this.selectedComplaint = complaint;
         this.selectedIndex = index;
         this.loadFormValue();
+    };
+    ComplaintComponent.prototype.seletToExpand = function (c) {
+        this.selectedComplaint = c;
     };
     ComplaintComponent.prototype.updateComplaint = function () {
         var _this = this;
@@ -247,6 +251,7 @@ ComplaintComponent = __decorate([
     core_1.Component({
         selector: 'complaint',
         templateUrl: './complaint.component.html',
+        styleUrls: ['./complaint.component.css']
     }),
     __metadata("design:paramtypes", [complaint_service_1.ComplaintService,
         router_1.Router,

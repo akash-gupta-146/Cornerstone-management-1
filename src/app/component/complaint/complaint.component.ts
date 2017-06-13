@@ -7,7 +7,7 @@ declare let $:any;
 @Component({
   selector: 'complaint',
   templateUrl: './complaint.component.html',
-  // styleUrls: ['./complaint.component.css']
+  styleUrls: ['./complaint.component.css']
 })
 export class ComplaintComponent implements OnInit, AfterViewInit {
 
@@ -107,6 +107,7 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   public fetchComplaints() {
     this.loader = true;
     this.cs.getComplaint(this.url, this.currentPage).subscribe((res) => {
+      console.log(res);
       this.onSuccess(res);
     }, (err) => {
       this.onError(err);
@@ -136,6 +137,10 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
     this.selectedComplaint = complaint;
     this.selectedIndex = index;
     this.loadFormValue();
+  }
+
+  public seletToExpand(c:any){
+    this.selectedComplaint = c;
   }
 
   public updateComplaint() {

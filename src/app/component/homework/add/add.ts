@@ -9,7 +9,7 @@ declare let $:any;
 @Component({
   selector: 'homework-add',
   templateUrl: './add.html',
-  // styleUrls:['../homework.component.css']
+  //styleUrls:['../homework.component.css']
   
 })
 

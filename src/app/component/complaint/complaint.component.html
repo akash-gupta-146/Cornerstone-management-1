@@ -54,6 +54,103 @@
         </tr>
       </tbody>
     </table>
+    <!--cards -->
+    <div class="container card" *ngFor="let c of complaints; let i = index;">
+      <div class="row">
+        <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(c)" data-toggle="modal" data-target="#myModal-card"></span>
+      </div>
+      <!--<div class="row">
+        <div class="col-sm-6" *ngIf="!complaintStatus">
+          <span [style.background]="c.statusColor" class="badge">{{c.statusName}}</span>
+        </div>
+        <div class="col-sm-6">{{c.priorityName}}</div>
+      </div>-->
+      <div class="row">
+        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png">
+      </div>
+      <div class="row name">{{c.studentName}}</div>
+      <div class="row class">{{c.studentStandardName}}</div><hr>
+      <div class="row title">{{c.title}}</div>
+      <div class="row">
+        <div class="col-sm-6 edit" *ngIf="!(complaintStatus == 4 || complaintStatus == 5)">
+          <a [ngClass]="{'disabled-click' : c.statusId == 4}" (click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
+              class="action"><i class="glyphicon glyphicon-pencil"></i>
+          </a>
+        </div>
+        <div class="col-sm-6 comment">
+          <a onclick="$('.panel.panel-chat').show();" (click)="getComplaintCommentById(c)" class="action"><i class="glyphicon glyphicon-comment"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!--end cards-->
+<div class="modal fade" id="myModal-card" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngIf="selectedComplaint" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">{{selectedComplaint.title}}</h4>
+      </div>
+      <div class="modal-body card-modal" >
+        
+        <div class="row modal-heading">
+          <div class="col-sm-4">
+            <div class="row comment-modal">
+            <label class="heading">Comments</label>
+            <div class="result">4</div>
+            </div><br>
+            <div class="row status-modal">
+              <label class="heading">Status</label><br>
+              <div class="result badge">{{selectedComplaint.statusName}}</div>
+            </div>
+          </div>
+          <div class="col-sm-4"><img src="https://www.artconversation.com/core/images/default/default_avatar_large.png" class="modal-image"></div>
+          <div class="col-sm-4">
+            <div class="row" *ngIf="selectedComplaint.assignedEmployeeName">@{{selectedComplaint.assignedEmployeeName}}</div><br>
+            <div class="row priority-modal"><label class="heading">Priority</label><div>{{selectedComplaint.priorityName}}</div></div>
+          </div>
+          
+        </div>
+        <div class="row modal-name">{{selectedComplaint.studentName}}
+          <div class="modal-class">{{selectedComplaint.studentStandardName}}</div>
+        </div>
+        <div class="row modal-description"><label class="heading">Description</label><div class="result">{{selectedComplaint.description}}</div></div><hr class="style-line">
+        <div class="row">
+          <div class="col-sm-6" ><label class="heading">Created At</label><div class="result">{{selectedComplaint.createdAt | date: "shortDate"}}</div></div>
+          <div class="col-sm-6" ><label class="heading">Closed On</label><div class="result">{{selectedComplaint.closedOn | date: "shortDate"}}</div></div>
+        </div><hr class="style-line">
+        <div class="row modal-closed-on" *ngIf="selectedComplaint.closedOn" style="align:left">
+          <label class="heading">Root Cause  </label><div class="result"> {{selectedComplaint.rca}}</div>
+        </div><hr class="style-line">
+        <div class="row complaint-category">
+          <div class="col-sm-6">
+            <label class="heading">Complaint-Category</label>
+            <div class="result">{{selectedComplaint.againstCategoryName}}</div>
+          </div>
+          <div class="col-sm-6" >
+            <label class="heading">Complaint-Against</label>
+            <div class="result">{{selectedComplaint.againstEmployeeNam}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-sm-4"> 
+            <button [ngClass]="{'disabled-click' : selectedComplaint.statusId == 4}"(click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
+              class="btn btn-danger " data-dismiss="modal">Edit</button>
+          </div>
+          <div class="col-sm-4">
+            <button onclick="$('.panel.panel-chat').show();"  (click)="getComplaintCommentById(c)" class="btn btn-danger" data-dismiss="modal" >Comment</button>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
     <div class="row text-center">
       <loader [condition]="loader"></loader>
     </div>
@@ -199,3 +296,4 @@
     </form>
   </div>
 </div>
+
