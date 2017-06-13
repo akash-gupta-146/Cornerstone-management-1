@@ -197,12 +197,16 @@ var ComplaintComponent = (function () {
         var _this = this;
         var val = ev.target.value;
         if (val && val.trim() != '') {
+            this.loader = true;
             this.cs.searchComplaints(this.currentPage, { "search": val }).subscribe(function (res) {
+                _this.loader = false;
                 _this.complaints = res;
                 if (res.status == 204) {
                     _this.complaints = [];
+                    _this.loader = false;
                 }
             }, function (error) {
+                _this.loader = false;
                 console.log("error", error);
             });
         }

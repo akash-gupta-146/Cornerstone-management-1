@@ -203,13 +203,17 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   public searchComplaints(ev: any) {
     let val:any = ev.target.value;
      if (val && val.trim() != '') {
+       this.loader = true;
       this.cs.searchComplaints(this.currentPage, {"search":val}).subscribe( (res:any) =>{
+        this.loader = false;
      this.complaints = res;
      if (res.status==204) {
        this.complaints = [];
+       this.loader = false;
      }
     },
     (error:any) => {
+      this.loader = false;
       console.log("error", error);
     })
    }
