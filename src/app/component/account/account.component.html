@@ -2,27 +2,20 @@
 <hr>
 
 <!--<button (click)= "loadAccountDetails(d)"> Click </button>-->
-<div class='account'  >
-  
-Name: {{name}}
-<br>
-<div class='pic'>Profile Pic:
-   <a data-toggle="modal" data-target="#myModal"> <img src="{{lg.getData('picUrl')}}" class= "picture" height= "100px" width="100px"></a>
-<!--<p class="img_desc">Image Desc </p>-->
-</div>
-<div class= 'detail'>
-   
-   <br>
-   <br>
+<div class='account'>
+  Name: {{name}}
+  <br>
+  <div class='pic'>Profile Pic:
+    <a data-toggle="modal" class="picture" data-target="#myModal"> <img src="{{lg.getData('picUrl')}}"  height= "100px" width="100px"></a>
+    <p class="img_desc">Update Profile Picture </p>
+  </div>
+  <div class='detail'>
     <u><b>Details</b></u>
+    <br> Nick Name: {{nickName}}
+    <br> Email: {{email}}
+    <br> Role: {{role}}
     <br>
-Nick Name: {{nickName}}
-<br>
-Email: {{email}}
-<br>
-Role: {{role}}
-<br>
-</div>
+  </div>
 </div>
 
 <!-- Update Modal -->
@@ -30,7 +23,7 @@ Role: {{role}}
   <div class="modal-dialog">
 
     <!-- Update Modal content-->
-   
+
 
     <div class="modal-content">
       <div class="modal-header">
@@ -39,21 +32,24 @@ Role: {{role}}
       </div>
       <form [formGroup]="uploadPicForm" (submit)="submitAccountDetails(d)">
         <div class="modal-body">
+          <div class="row text-center">
+            <loader [condition]="loader"></loader>
+          </div>
           <div class="form-group">
-      <div>Attachment</div>
-        <label for="exampleInputFile" class="exampleInputFile">Choose a file...<span class="glyphicon glyphicon-circle-arrow-up custom"></span></label>
-        
-        <br>
-        <input type="file" class="form-control-file" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp" (change)="getFile($event)" style="display:none;">
-      </div>
-      
+            <div>Attachment</div>
+            <label for="exampleInputFile" class="exampleInputFile">Choose a file...<span class="glyphicon glyphicon-circle-arrow-up custom"></span></label>
+
+            <br>
+            <input type="file" class="form-control-file" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp"
+              (change)="getFile($event)" style="display:none;">
+          </div>
+
         </div>
         <div class="modal-footer">
           <button type="Submit" class="btn btn-default">Submit</button>
         </div>
-        </form>
-    
+      </form>
+
     </div>
   </div>
 </div>
-

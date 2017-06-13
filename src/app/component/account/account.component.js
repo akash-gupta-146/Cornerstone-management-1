@@ -24,6 +24,7 @@ var AccountComponent = (function () {
         this.route = route;
         this.name = "";
         this.url = "";
+        this.loader = false;
         this.url = this.router.url;
     }
     AccountComponent.prototype.ngOnInit = function () {
@@ -44,11 +45,14 @@ var AccountComponent = (function () {
         console.log(this.imgFile);
     };
     AccountComponent.prototype.submitAccountDetails = function (details) {
+        var _this = this;
+        this.loader = true;
         var formData = new FormData();
         formData.append('file', this.imgFile);
         this.au.uploadImage(formData).subscribe(function (res) {
             localStorage.setItem('picUrl', localStorage.getItem('fileUrl') + "/" + res.fileTimestamp);
             $('#myModal').modal('hide');
+            _this.loader = false;
         });
     };
     return AccountComponent;
