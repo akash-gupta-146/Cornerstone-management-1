@@ -11,6 +11,7 @@ import { HomeworkAddComponent } from './component/homework/add/add';
 import { CurrentHomework } from './component/homework/current/homework';
 import { PassedHomework } from './component/homework/passed/homework';
 import { MainComponent } from './component/main/main.component';
+import { AccountComponent } from './component/account/account.component';
 
 
 import { LoggedInGuard } from './component/login/login.gaurd';
@@ -34,5 +35,6 @@ export const rootRouterConfig: Routes = [
       ]
     },
     { path:'homework-add', component:HomeworkAddComponent, canActivate: [LoggedInGuard]},
+    { path: 'account', component: AccountComponent}
   ]},
 ];
