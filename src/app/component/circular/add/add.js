@@ -76,7 +76,6 @@ var AddCircular = (function () {
         });
     };
     AddCircular.prototype.buildCircularData = function (circular) {
-        console.log("SASAS", circular);
         this.circularType = circular;
     };
     AddCircular.prototype.onCircularType = function (event) {
@@ -96,8 +95,6 @@ var AddCircular = (function () {
     };
     AddCircular.prototype.selectStandards = function (e) {
         var _this = this;
-        // this.standard = [];
-        console.log(e);
         this.stdIds = [];
         e.forEach(function (element) {
             _this.stdIds.push(element.id);

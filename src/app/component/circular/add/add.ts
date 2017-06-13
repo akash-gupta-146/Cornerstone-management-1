@@ -25,7 +25,7 @@ export class AddCircular implements OnInit, AfterViewInit{
   ngOnInit() {
     this.circular = this.initForm();
   }
-
+  
   onDueDate(e:any){
     if(new Date(e.target.value) < new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())){
       alert("Invalid Date");
@@ -82,7 +82,6 @@ export class AddCircular implements OnInit, AfterViewInit{
   }
 
   public buildCircularData(circular:any) {
-    console.log("SASAS", circular);
     this.circularType = circular;
   }
 
@@ -104,8 +103,6 @@ export class AddCircular implements OnInit, AfterViewInit{
   stdIds:any = [];
   standard:any;
   selectStandards(e:any){
-    // this.standard = [];
-    console.log(e);
     this.stdIds = [];
     e.forEach((element:any) => {
       this.stdIds.push(element.id);
