@@ -112,6 +112,9 @@ htlm, body
     width: 280px;
     word-break: break-all;
 }*/
+.example-search-input{
+    border-radius: 25px !important;
+}
 .panel.panel-chat .panel-footer
 {
     padding: 0;
@@ -346,10 +349,7 @@ h1{
 }*/
 
 hr.style-line {
- border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
 }
