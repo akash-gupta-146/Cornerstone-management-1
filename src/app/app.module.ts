@@ -19,6 +19,7 @@ import { CurrentHomework } from './component/homework/current/homework';
 import { PassedHomework } from './component/homework/passed/homework';
 import { GoogleChart } from './customComponent/chart.directive';
 import { CustomLoader } from './customComponent/loader.component';
+import { AccountComponent } from './component/account/account.component';
 
 /*Providers */
 import { LoggedInGuard } from './component/login/login.gaurd';
@@ -55,6 +56,7 @@ import {XHRBackend, RequestOptions} from '@angular/http';
     PassedHomework,
     GoogleChart,
     CustomLoader,
+    AccountComponent,
   ],
   providers: [LoggedInGuard,Configuration,CommonService,CustomHttpService,AuthService,ComplaintService,ChartService,
               HomeworkService,CircularService,

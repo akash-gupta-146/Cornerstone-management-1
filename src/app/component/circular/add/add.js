@@ -21,6 +21,7 @@ var AddCircular = (function () {
         this._location = _location;
         this.title = 'Add Circular';
         this.submitProgress = false;
+        this.stdIds = [];
     }
     AddCircular.prototype.ngOnInit = function () {
         this.circular = this.initForm();
@@ -41,7 +42,6 @@ var AddCircular = (function () {
             description: new forms_1.FormControl('', [forms_1.Validators.required]),
             date: new forms_1.FormControl(this.commonService.getTomorrow(), [forms_1.Validators.required]),
             circularTypeId: new forms_1.FormControl('', []),
-            standardIds: new forms_1.FormControl([], [forms_1.Validators.required])
         });
     };
     AddCircular.prototype.getStandards = function () {
@@ -76,12 +76,12 @@ var AddCircular = (function () {
         });
     };
     AddCircular.prototype.buildCircularData = function (circular) {
-        console.log("SASAS", circular);
         this.circularType = circular;
     };
     AddCircular.prototype.onCircularType = function (event) {
         if (event == "1") {
             this.circular.removeControl("standardIds");
+            this.standard = [];
         }
         else if (event == "2") {
             this.circular.addControl("standardIds", new forms_1.FormControl('', [forms_1.Validators.required]));
@@ -92,6 +92,14 @@ var AddCircular = (function () {
         console.log(this.circular.value);
         this.submitProgress = true;
         this.onSubmit();
+    };
+    AddCircular.prototype.selectStandards = function (e) {
+        var _this = this;
+        this.stdIds = [];
+        e.forEach(function (element) {
+            _this.stdIds.push(element.id);
+        });
+        this.circular.controls['standardIds'].patchValue(this.stdIds);
     };
     AddCircular.prototype.onSubmit = function () {
         var _this = this;

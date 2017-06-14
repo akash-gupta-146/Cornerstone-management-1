@@ -26,6 +26,7 @@ var homework_1 = require("./component/homework/current/homework");
 var homework_2 = require("./component/homework/passed/homework");
 var chart_directive_1 = require("./customComponent/chart.directive");
 var loader_component_1 = require("./customComponent/loader.component");
+var account_component_1 = require("./component/account/account.component");
 /*Providers */
 var login_gaurd_1 = require("./component/login/login.gaurd");
 var default_header_service_1 = require("./providers/default.header.service");
@@ -67,6 +68,7 @@ AppModule = __decorate([
             homework_2.PassedHomework,
             chart_directive_1.GoogleChart,
             loader_component_1.CustomLoader,
+            account_component_1.AccountComponent,
         ],
         providers: [login_gaurd_1.LoggedInGuard, app_constant_1.Configuration, common_service_1.CommonService, default_header_service_1.CustomHttpService, auth_service_1.AuthService, complaint_service_1.ComplaintService, chart_service_1.ChartService,
             homework_service_1.HomeworkService, circular_service_1.CircularService,

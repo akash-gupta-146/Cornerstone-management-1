@@ -36,6 +36,13 @@ export class HomeworkAddComponent implements OnInit{
     console.log(this.file);
   }
 
+  onDueDate(e:any){
+    if(new Date(e.target.value) < new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())){
+      alert("Invalid Date");
+      this.homework.controls['dueDate'].patchValue(this.commonService.getTomorrow());
+    }
+  }
+
   public initForm() {
     this.homework = new FormGroup({
       description: new FormControl('', [Validators.required, Validators.maxLength(250)]),

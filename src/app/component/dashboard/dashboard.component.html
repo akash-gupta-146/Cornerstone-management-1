@@ -14,9 +14,12 @@
       <!-- /.panel-heading -->
       <div class="panel-body">
         <div class="flot-chart">
+          <!--<div class="row text-center">
+            <loader [condition]="true"></loader>
+          </div>-->
           <div class="flot-chart-content" *ngIf="complaintByCategoryAndStatus" GoogleChart id="chart_by_category_status" 
           [chartData]="complaintByCategoryAndStatus" [chartOptions]="categoryAndStatusChartOptions" chartType="BarChart" 
-          (onSelected)="t = onSelected($event)"></div>
+          (onSelected)="onSelected($event)"></div>
         </div>
       </div>
       <!-- /.panel-body -->
@@ -32,6 +35,9 @@
       <!-- /.panel-heading -->
       <div class="panel-body">
         <div class="flot-chart">
+          <!--<div class="row text-center">
+            <loader [condition]="true"></loader>
+          </div>-->
           <div class="flot-chart-content" *ngIf="complaintByStatus" GoogleChart id="complaint_chart_by_status" 
           [chartData]="complaintByStatus"	[chartOptions]="complaintByStatusChartOptions" chartType="PieChart" 
           (onSelected)="onSelected($event)">

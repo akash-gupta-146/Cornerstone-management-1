@@ -25,7 +25,7 @@ export class AddCircular implements OnInit, AfterViewInit{
   ngOnInit() {
     this.circular = this.initForm();
   }
-
+  
   onDueDate(e:any){
     if(new Date(e.target.value) < new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())){
       alert("Invalid Date");
@@ -44,7 +44,7 @@ export class AddCircular implements OnInit, AfterViewInit{
       description: new FormControl('', [Validators.required]),
       date: new FormControl(this.commonService.getTomorrow(), [Validators.required]),
       circularTypeId: new FormControl('', []),
-      standardIds: new FormControl([], [Validators.required])
+      // standardIds: new FormControl([], [Validators.required])
     });
   }
 
@@ -82,13 +82,13 @@ export class AddCircular implements OnInit, AfterViewInit{
   }
 
   public buildCircularData(circular:any) {
-    console.log("SASAS", circular);
     this.circularType = circular;
   }
 
   public onCircularType(event: any) {
     if (event == "1") {
       this.circular.removeControl("standardIds");
+      this.standard = [];
     } else if (event == "2") {
       this.circular.addControl("standardIds", new FormControl('', [Validators.required]));
     }
@@ -99,6 +99,15 @@ export class AddCircular implements OnInit, AfterViewInit{
     console.log(this.circular.value);
     this.submitProgress = true;
     this.onSubmit();
+  }
+  stdIds:any = [];
+  standard:any;
+  selectStandards(e:any){
+    this.stdIds = [];
+    e.forEach((element:any) => {
+      this.stdIds.push(element.id);
+    });
+    this.circular.controls['standardIds'].patchValue(this.stdIds);
   }
 
   public onSubmit() {
