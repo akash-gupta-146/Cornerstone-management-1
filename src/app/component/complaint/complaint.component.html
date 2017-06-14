@@ -56,17 +56,17 @@
       </tbody>
     </table>
     <!--cards -->
-    <div class="container card" *ngFor="let c of complaints; let i = index;">
+    <!--<div class="container card" *ngFor="let c of complaints; let i = index;">
       <div class="row">
         <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(c)" data-toggle="modal" data-target="#myModal-card"></span>
-      </div>
+      </div>-->
       <!--<div class="row">
         <div class="col-sm-6" *ngIf="!complaintStatus">
           <span [style.background]="c.statusColor" class="badge">{{c.statusName}}</span>
         </div>
         <div class="col-sm-6">{{c.priorityName}}</div>
       </div>-->
-      <div class="row">
+      <!--<div class="row">
         <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png">
       </div>
       <div class="row name">{{c.studentName}}</div>
@@ -83,9 +83,9 @@
           </a>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--end cards-->
-<div class="modal fade" id="myModal-card" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+<!--<div class="modal fade" id="myModal-card" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content" *ngIf="selectedComplaint" >
       <div class="modal-header">
@@ -148,9 +148,9 @@
           </div>
         </div>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>-->
 
     <div class="row text-center">
       <loader [condition]="loader"></loader>
