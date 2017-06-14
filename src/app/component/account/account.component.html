@@ -1,38 +1,48 @@
-<h1>Profile</h1>
-<hr>
-
-<!--<button (click)= "loadAccountDetails(d)"> Click </button>-->
-<div class='account'  >
-  
-Name: {{name}}
-<br>
-<div class='pic'>Profile Pic:
-   <a data-toggle="modal" data-target="#myModal"> <img src="{{lg.getData('picUrl')}}" class= "picture" height= "100px" width="100px"></a>
-<!--<p class="img_desc">Image Desc </p>-->
+<div class="profile">
+  <div class="row">
+    <a data-toggle="modal" data-target="#myModal"> <img src="{{lg.getData('picUrl')}}" class= "profile-picture"></a>
+  </div>
+  <div class="row">
+    <div class="name" name="name">{{name}}({{nickName}})</div>
+  </div>
+    <div class="row">
+    <div class="role" name="role">{{role}}</div>
+  </div>
+    <div class="row">
+    <div class="email" name="email">{{email}}</div><hr class="style-line">
+  </div>
+  <div class="row">
+      <div class="col-sm-4">
+        <div class="row">
+        <button type="button" class="btn btn-success btn-circle" [routerLink]="['/add-circular']">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+        </div>
+        <div class="row">Add Circular</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="row">
+        <button type="button" class="btn btn-success btn-circle" [routerLink]="['/homework-add']">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+        </div>
+        <div class="row">Add Homework</div>
+      </div>
+      <div class="col-sm-4">
+        <div class="row">
+        <button type="button" class="btn btn-success btn-circle" [routerLink]="['/add-circular']">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+        </div>
+        <div class="row">Add</div>
+      </div>
 </div>
-<div class= 'detail'>
-   
-   <br>
-   <br>
-    <u><b>Details</b></u>
-    <br>
-Nick Name: {{nickName}}
-<br>
-Email: {{email}}
-<br>
-Role: {{role}}
-<br>
 </div>
-</div>
-
-<!-- Update Modal -->
+<br>
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
-
     <!-- Update Modal content-->
-   
-
-    <div class="modal-content">
+   <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Update Profile Picture </h4>
@@ -40,11 +50,7 @@ Role: {{role}}
       <form [formGroup]="uploadPicForm" (submit)="submitAccountDetails(d)">
         <div class="modal-body">
           <div class="form-group">
-      <div>Attachment</div>
-        <label for="exampleInputFile" class="exampleInputFile">Choose a file...<span class="glyphicon glyphicon-circle-arrow-up custom"></span></label>
-        
-        <br>
-        <input type="file" class="form-control-file" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp" (change)="getFile($event)" style="display:none;">
+        <input type="file" class="form-control-file" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp" (change)="getFile($event)">
       </div>
       
         </div>
@@ -56,4 +62,3 @@ Role: {{role}}
     </div>
   </div>
 </div>
-
