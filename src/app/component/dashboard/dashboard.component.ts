@@ -50,13 +50,17 @@ export class DashboardComponent {
         if (parts[0] == "slice") {
           this.zone.run(() => this.router.navigate(['/complaint/status/' + dataTable.getValue(parseInt(parts[1]), 2)]));
         }
-        else if (parts[0] == "legendentry")
+        else if (parts[0] == "legendentry"){
+
+        }
         break;
       case "EWNS_suggestion":
         if (parts[0] == "slice") {
           this.zone.run(() => this.router.navigate(['/suggestion/status/' + dataTable.getValue(parseInt(parts[1]), 2)]));
         }
-        else if (parts[0] == "legendentry")
+        else if (parts[0] == "legendentry") {
+          
+        }
         break;
       case "chart_by_category_status":
         if (parts[0] == "vAxis") {

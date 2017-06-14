@@ -46,14 +46,16 @@ var DashboardComponent = (function () {
                 if (parts[0] == "slice") {
                     this.zone.run(function () { return _this.router.navigate(['/complaint/status/' + dataTable.getValue(parseInt(parts[1]), 2)]); });
                 }
-                else if (parts[0] == "legendentry")
-                    break;
+                else if (parts[0] == "legendentry") {
+                }
+                break;
             case "EWNS_suggestion":
                 if (parts[0] == "slice") {
                     this.zone.run(function () { return _this.router.navigate(['/suggestion/status/' + dataTable.getValue(parseInt(parts[1]), 2)]); });
                 }
-                else if (parts[0] == "legendentry")
-                    break;
+                else if (parts[0] == "legendentry") {
+                }
+                break;
             case "chart_by_category_status":
                 if (parts[0] == "vAxis") {
                     var categoryId = dataTable.getValue(parseInt(parts[parts.indexOf('label') + 1]), 1);
