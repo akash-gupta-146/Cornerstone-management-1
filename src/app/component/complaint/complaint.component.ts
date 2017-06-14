@@ -206,8 +206,26 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   }
 
   public searchComplaints(ev: any) {
-    let val = ev.target.value;
-    // this.cs.searchComplaints(this.currentPage, val)
+    let val:any = ev.target.value;
+     if (val && val.trim() != '') {
+       this.loader = true;
+      this.cs.searchComplaints(this.currentPage, {"search":val}).subscribe( (res:any) =>{
+        this.loader = false;
+     this.complaints = res;
+     if (res.status==204) {
+       this.complaints = [];
+       this.loader = false;
+     }
+    },
+    (error:any) => {
+      this.loader = false;
+      console.log("error", error);
+    })
+   }
+   else {
+     this.complaints = this.complaintsCOPY;
+   }
+    
   }
 
   // public searchComplaints(ev: any) {
@@ -217,7 +235,7 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   //     this.complaints = this.complaintsCOPY.filter((item) => {
   //       return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
   //     });
-  //   }
+  //  }
   // }
 
   public complaintIdOfCommentModel:any;

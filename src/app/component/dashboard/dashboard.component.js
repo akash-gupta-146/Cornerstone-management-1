@@ -32,7 +32,6 @@ var DashboardComponent = (function () {
         // }, (err) => {
         //   console.log(err);
         // });
-        console.log(this.router.url);
     }
     DashboardComponent.prototype.onSelected = function (data) {
         var _this = this;

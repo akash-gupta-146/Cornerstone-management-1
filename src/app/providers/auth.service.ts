@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
+import { Http,Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { CommonService } from './common.service';
 
@@ -14,15 +14,16 @@ import { CustomHttpService } from './default.header.service';
 export class AuthService {
 
   constructor(private http: CustomHttpService,
-              public commonService: CommonService,
-              private con: Configuration) {
+    public htttp:Http,
+    public commonService: CommonService,
+    private con: Configuration) {
     this.serverUrl = con.url;
   }
 
   serverUrl: string;
   public login: any = false;
   headers: any;
-  id:any;
+  id: any;
   access_token: string;
 
   // called after logout
@@ -32,44 +33,44 @@ export class AuthService {
 
   isLoggedIn() {
     let access_token = localStorage.getItem("access_token");
-    if (access_token) {        
+    if (access_token) {
       return !this.login;
     } else {
       return this.login;
     }
   }
 
-  verifyUser(data:any): Observable<any[]> {
-    return this.http.post(this.serverUrl + "/oauth/token?grant_type=password&username="+data.username+"&password="+data.password, {})
-                    .map(this.extractData)
-                    .catch(this.handleError);
+  verifyUser(data: any): Observable<any[]> {
+    return this.http.post(this.serverUrl + "/oauth/token?grant_type=password&username=" + data.username + "&password=" + data.password, {})
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   getUserInfo(): Observable<any[]> {
     return this.http.get(this.serverUrl + "/management/info")
-                    .map(this.extractData)
-                    .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   logout() {
     return this.http.get(this.serverUrl + "/management/logout")
-                    .map(this.extractData)
-                    .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  forgotPassword(data:any) {
+  forgotPassword(data: any) {
     return this.http.put(this.serverUrl + "/forgot-password", data)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  resetPassword(data:any) {
+  resetPassword(data: any) {
     return this.http.put(this.serverUrl + "/management/" + this.con.userId + "/password", data)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  storeData(data:any) {
+  storeData(data: any) {
     localStorage.setItem("id", data.id);
     localStorage.setItem("role", data.role);
     this.commonService.storeData("classTeacher", data.classTeacher);
@@ -80,17 +81,31 @@ export class AuthService {
     localStorage.setItem("fileUrl", data.fileUrl);
     localStorage.setItem("picOriginalName", data.picOriginalName);
     localStorage.setItem("picTimestamp", data.picTimestamp);
-    localStorage.setItem('picUrl', data.fileUrl+"/"+data.picTimestamp);
+    localStorage.setItem('picUrl', data.fileUrl + "/" + data.picTimestamp);
     this.con.setAccessToken();
+  }
+
+  public uploadImage(data: any) {
+    var option = new RequestOptions({
+      headers: new Headers({
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+        
+        })
+    });
+    return this.htttp.post(this.con.baseUrl + "management/" + this.con.getUserId() + "/picture", data, option)
+    .map(this.extractData)
+    .catch(this.handleError);
   }
 
   private extractData(res: Response) {
     let body = res.json();
-    return body || { };
+    return body || {};
   }
 
   private handleError(error: Response | any) {
     return Observable.throw(error.status);
   }
+
+
 
 }

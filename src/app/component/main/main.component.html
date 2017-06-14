@@ -19,7 +19,7 @@
     <div id="sidebar-wrapper" >
       <ul class="sidebar-nav">
         <li class="sidebar-header">
-          <div class="profile-display">
+         <a routerLink="/account"> <div class="profile-display">
             <div class="accBgImage">
               <div class="padding">
               <img class="profile-img" src="{{log.getData('picUrl')}}" *ngIf="log.getData('picUrl')">
@@ -28,7 +28,7 @@
                 {{log.getData('name')}}
               </div>
             </div>
-          </div>
+          </div> </a>
         </li>
         <li *ngFor="let page of pages;" class="sidebar-items">
           <a [routerLink]="['/'+page.url]" routerLinkActive="active">

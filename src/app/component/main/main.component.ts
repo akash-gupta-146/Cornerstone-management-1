@@ -5,6 +5,8 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HomeworkComponent } from '../homework/homework.component';
 import { LoggedInGuard } from '../login/login.gaurd';
 
+declare let $:any;
+
 @Component({
   selector:'main',
   templateUrl:"./main.component.html",
@@ -22,7 +24,6 @@ export class MainComponent implements OnInit, AfterViewInit{
     ];
 
   constructor(public log:LoggedInGuard){
-    console.log("name",log.getData('username'));
   }
 
   ngOnInit(){
