@@ -1,5 +1,5 @@
 <h1>Circulars
-<button type="button" class="btn btn-success btn-circle" [routerLink]="['/add-circular']">
+  <button type="button" class="btn btn-success btn-circle" [routerLink]="['/add-circular']">
   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 </button>
 </h1>
@@ -9,8 +9,11 @@
 
   <!-- Table -->
   <div class="panel-body">
-    <div style="text-align: center" *ngIf="EmptyCirculars"><b>No Circular added to View</b></div>
-    <table class="table table-hover" *ngIf="!EmptyCirculars">
+    <div class="row text-center">
+      <loader [condition]="loader"></loader>
+    </div>
+<div *ngIf="EmptyCirculars"> <b>No Circular is added to the View</b> </div>
+    <table class="table table-hover" *ngIf="(!EmptyCirculars) && (!loader)">
       <thead>
         <tr>
           <th>Title</th>
@@ -19,7 +22,7 @@
           <th>Type</th>
         </tr>
       </thead>
-      <tbody *ngFor="let circular of circulars" class="container-border"> 
+      <tbody *ngFor="let circular of circulars" class="container-border">
         <tr data-toggle="collapse" [attr.data-target]="'#' + circular.id">
           <td>{{circular.title}}</td>
           <td>{{circular.start}}</td>
@@ -29,13 +32,15 @@
         <tr [attr.id]="circular.id" class="collapse">
           <td colspan="5" style="border:none;">
             <b>Description : </b>{{circular.description}}
+            <br>
+            <p *ngIf="circular.standards"> 
+            <b>Class : </b> {{circular.standards}}
+            </p>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="row text-center">
-      <loader [condition]="loader"></loader>
-    </div>
+    
   </div>
   <div class="panel-footer">
     <!--<nav aria-label="Page navigation example">
@@ -48,6 +53,6 @@
       </ul>
     </nav>-->
     <button (click)="previousCircular()" class="btn btn-danger nav-btn right" [disabled]="currentPage === 1">Previous</button>
-    <button (click)="nextCircular()" class="btn right btn-danger nav-btn" [disabled]="EmptyCirculars || noMore">Next</button>    
+    <button (click)="nextCircular()" class="btn right btn-danger nav-btn" [disabled]="EmptyCirculars || noMore">Next</button>
   </div>
 </div>

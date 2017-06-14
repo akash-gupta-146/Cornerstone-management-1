@@ -40,7 +40,7 @@
             <label for="exampleInputFile" class="exampleInputFile">Choose a file...<span class="glyphicon glyphicon-circle-arrow-up custom"></span></label>
 
             <br>
-            <input type="file" class="form-control-file" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp"
+            <input type="file" class="form-control-file" accept="image/*" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp"
               (change)="getFile($event)" style="display:none;">
           </div>
 

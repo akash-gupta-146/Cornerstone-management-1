@@ -18,6 +18,10 @@ var DashboardComponent = (function () {
         this.cs = cs;
         this.router = router;
         this.zone = zone;
+        this.loader = false;
+        this.loader1 = false;
+        this.loader = true;
+        this.loader1 = true;
         cs.getComplaintByCategoryAndStatus().subscribe(function (response) {
             _this.responseByCategoryAndStatus = response;
             _this.chartByCategoryAndStatus();
@@ -43,27 +47,22 @@ var DashboardComponent = (function () {
                     this.zone.run(function () { return _this.router.navigate(['/complaint/status/' + dataTable.getValue(parseInt(parts[1]), 2)]); });
                 }
                 else if (parts[0] == "legendentry")
-                    console.log("legendentry : " + parts[1]);
-                break;
+                    break;
             case "EWNS_suggestion":
                 if (parts[0] == "slice") {
                     this.zone.run(function () { return _this.router.navigate(['/suggestion/status/' + dataTable.getValue(parseInt(parts[1]), 2)]); });
                 }
                 else if (parts[0] == "legendentry")
-                    console.log("legendentry : " + parts[1]);
-                break;
+                    break;
             case "chart_by_category_status":
                 if (parts[0] == "vAxis") {
                     var categoryId = dataTable.getValue(parseInt(parts[parts.indexOf('label') + 1]), 1);
                     this.zone.run(function () { return _this.router.navigate(['/complaint/category-status/category/' + categoryId]); });
-                    console.log("categoryId :" + categoryId);
                 }
                 else if (parts[0] == "bar") {
-                    console.log(parts);
                     var categoryId = dataTable.getValue(parseInt(parts[2]), 1);
                     var statusId = dataTable.getValue(parseInt(parts[2]), (parseInt(parts[1]) + 1) * 2 + 1);
                     this.zone.run(function () { return _this.router.navigate(['complaint/category-status/' + categoryId + '/' + statusId]); });
-                    console.log("categoryId :" + categoryId + ",statusId :" + statusId);
                 }
                 else if (parts[0] == "legendentry") {
                     for (var i = 0; i < this.responseByCategoryAndStatus.length; i++) {
@@ -79,7 +78,6 @@ var DashboardComponent = (function () {
                             }
                         }
                     data.wrapper.draw();
-                    console.log("legendentry : " + parts[1]);
                 }
                 break;
         }
@@ -107,6 +105,7 @@ var DashboardComponent = (function () {
             chartArea: { left: '10%', height: "40%", width: "40%", bottom: '10%', right: '10%', top: '0%' },
             is3D: true
         };
+        this.loader1 = false;
     };
     DashboardComponent.prototype.chartByCategoryAndStatus = function () {
         var data = [[]];
@@ -138,6 +137,7 @@ var DashboardComponent = (function () {
             isStacked: 'true', chartArea: {},
             colors: ['#4CAF50', '#2196f3', '#FFEB3B', '#F48FB1', '#EF5350', '#9C27B0', '#FF8C00']
         };
+        this.loader = false;
     };
     DashboardComponent.prototype.chartBySuggestionStatus = function () {
         var data = [];

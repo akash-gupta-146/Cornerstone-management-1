@@ -57,8 +57,6 @@ export class AccountComponent implements OnInit {
 
       public getFile(event: any) {
         this.imgFile = event.srcElement.files[0];
-        console.log(this.imgFile);
-       
     }
 
     public submitAccountDetails(details: any) {

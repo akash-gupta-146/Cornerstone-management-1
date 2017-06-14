@@ -42,7 +42,6 @@ var AccountComponent = (function () {
     };
     AccountComponent.prototype.getFile = function (event) {
         this.imgFile = event.srcElement.files[0];
-        console.log(this.imgFile);
     };
     AccountComponent.prototype.submitAccountDetails = function (details) {
         var _this = this;

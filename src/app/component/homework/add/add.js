@@ -20,6 +20,7 @@ var HomeworkAddComponent = (function () {
         this.commonService = commonService;
         this._location = _location;
         this.title = "New Homework";
+        this.submitProgress = false;
         this.standards = [];
         this.subjects = [];
     }
@@ -29,17 +30,16 @@ var HomeworkAddComponent = (function () {
     };
     HomeworkAddComponent.prototype.getFile = function (event) {
         this.file = event.srcElement.files[0];
-        console.log(this.file);
     };
     HomeworkAddComponent.prototype.onDueDate = function (e) {
         if (new Date(e.target.value) < new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())) {
-            alert("Invalid Date");
+            alert("Please choose an upcoming date from the calendar.");
             this.homework.controls['dueDate'].patchValue(this.commonService.getTomorrow());
         }
     };
     HomeworkAddComponent.prototype.initForm = function () {
         this.homework = new forms_1.FormGroup({
-            description: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.maxLength(250)]),
+            description: new forms_1.FormControl('', [forms_1.Validators.required]),
             standardId: new forms_1.FormControl('', [forms_1.Validators.required]),
             subjectId: new forms_1.FormControl('', [forms_1.Validators.required]),
             dueDate: new forms_1.FormControl(this.commonService.getTomorrow(), [forms_1.Validators.required]),
@@ -76,6 +76,7 @@ var HomeworkAddComponent = (function () {
         });
     };
     HomeworkAddComponent.prototype.submitHomework = function () {
+        this.submitProgress = true;
         var formData = new FormData();
         formData.append('description', this.homework.value['description']);
         formData.append('standardId', this.homework.value['standardId']);
@@ -83,7 +84,7 @@ var HomeworkAddComponent = (function () {
         formData.append('dueDate', this.homework.value['dueDate']);
         formData.append('file', this.file);
         this.saveHomework(formData);
-        console.log(formData);
+        this.submitProgress = false;
     };
     // public presentActionSheet() {
     //   let actionSheet = this.actionSheetCtrl.create({
