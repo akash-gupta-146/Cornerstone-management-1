@@ -1,4 +1,4 @@
-.picture {
+.picture img {
    
     border-radius: 100%;
     border: 3px solid white;
@@ -9,5 +9,22 @@
 
 .picture:hover {
     border-radius: 0%;
-opacity: 0.5;
+    opacity: 0.5;
 }
+
+.img_desc
+{
+    visibility: hidden;
+}
+
+.picture:hover .img_desc,
+.picture:hover ~ .img_desc {
+    visibility: visible;
+    position: absolute;
+    left: 15%;
+    border-radius: 10%;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    margin-bottom: 5%;
+}
+

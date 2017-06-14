@@ -6,6 +6,9 @@
   </button> 
    <div class="panel-body">
   <form name="homework" [formGroup]="homework" (ngSubmit)="submitHomework()" novalidate>
+    <div class="row text-center">
+      <loader [condition]="submitProgress"></loader>
+    </div>
     <div class="form-group">
       <label for="standardId">Select Year</label>
       <select class="form-control" id="standardId" name="standardId" formControlName="standardId" (ngModelChange)="getSubjects($event); ">
@@ -41,6 +44,7 @@
     </div>
 
     <button type="submit" class="btn btn-success" [disabled]="!homework.valid">Submit</button>
+  
   </form>
 </div>
 

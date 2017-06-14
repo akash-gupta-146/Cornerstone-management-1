@@ -20,7 +20,6 @@ var Scrollable = (function () {
         this.el = el;
     }
     Scrollable.prototype.onScroll = function (event) {
-        console.log("scroll");
     };
     return Scrollable;
 }());

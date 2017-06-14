@@ -29,7 +29,7 @@ export class ComplaintService {
   }
 
   getComplaintCommentById(url:any, complaintId:any) {
-    return this.http.get(this.baseUrl + url + "/" + complaintId + "/comment")
+    return this.http.get(this.baseUrl + "/complaint" + "/" + complaintId + "/comment")
       .map(this.extractData)
       .catch(this.handleError);
   }

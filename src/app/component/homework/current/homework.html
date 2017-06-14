@@ -2,8 +2,11 @@
   <div class="panel panel-default">
     <!--<div class="panel-heading">Current Homework</div>-->
     <div class="panel-body" id="accordion">
-      <div style="text-align: center" *ngIf="EmptyHomeworks" ><b>No Homework</b></div>
-      <table class="table table-hover" *ngIf="!EmptyHomeworks" >
+       <div class="row text-center">
+        <loader [condition]="loader"></loader>
+      </div>
+     <div *ngIf="EmptyHomeworks"> <b>No new Homework is added to the View</b> </div>
+      <table class="table table-hover" *ngIf="(!EmptyHomeworks) && (!loader)" >
         <thead>
           <tr>
             <th>Id</th>
@@ -32,9 +35,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="row text-center">
-        <loader [condition]="loader"></loader>
-      </div>
+     
     </div>
     
     <div class="panel-footer">
