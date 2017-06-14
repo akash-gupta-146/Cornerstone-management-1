@@ -24,6 +24,7 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   public complaintsCOPY: any;
   public EmptyComplaints: boolean = false;
   public loader: boolean = false;
+  public loader1: boolean = false;
   public currentPage = 1;
   public emptySearchResult: boolean = false;
   public complaint = {
@@ -142,13 +143,15 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
     if (this.editForm.value['statusId'])
       this.editForm.value['statusId'] = 3;
     else
-      delete this.editForm.value['statusId'];
+     { this.loader1 = true;
+      delete this.editForm.value['statusId']; }
     // if(this.editForm.value['assignedTo'] == this.selectedComplaint.assignedEmployeeId)
     //   delete this.editForm.value['assignedTo'];
     // if(this.editForm.value['priorityId'] == this.selectedComplaint.priorityId)
     //   delete this.editForm.value['priorityId'];
     this.cs.updateComplaint(this.selectedComplaint.id, this.editForm.value).subscribe(response => {
       this.complaints[this.selectedIndex] = response;
+      this.loader1 = false;
       $('#myModal').modal('hide');
     }, error => {
     })
@@ -158,7 +161,7 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
     this.editForm = new FormGroup({
       assignedTo: new FormControl(''),
       priorityId: new FormControl(''),
-      statusId: new FormControl('')
+       statusId: new FormControl('')
     })
   }
 
@@ -168,11 +171,13 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   }
 
   public closeComplaint() {
+    this.loader1=true;
     this.cs.closeComplaint(this.selectedComplaint.id, this.closeForm.value).subscribe(response => {
       this.complaints[this.selectedIndex] = response;
       $('#myModal3').modal('hide');
     }, error => {
     });
+    this.loader1 = false;
   }
 
 

@@ -21,6 +21,7 @@ var ComplaintComponent = (function () {
         this.route = route;
         this.EmptyComplaints = false;
         this.loader = false;
+        this.loader1 = false;
         this.currentPage = 1;
         this.emptySearchResult = false;
         this.complaint = {
@@ -143,14 +144,17 @@ var ComplaintComponent = (function () {
         var _this = this;
         if (this.editForm.value['statusId'])
             this.editForm.value['statusId'] = 3;
-        else
+        else {
+            this.loader1 = true;
             delete this.editForm.value['statusId'];
+        }
         // if(this.editForm.value['assignedTo'] == this.selectedComplaint.assignedEmployeeId)
         //   delete this.editForm.value['assignedTo'];
         // if(this.editForm.value['priorityId'] == this.selectedComplaint.priorityId)
         //   delete this.editForm.value['priorityId'];
         this.cs.updateComplaint(this.selectedComplaint.id, this.editForm.value).subscribe(function (response) {
             _this.complaints[_this.selectedIndex] = response;
+            _this.loader1 = false;
             $('#myModal').modal('hide');
         }, function (error) {
         });
@@ -168,11 +172,13 @@ var ComplaintComponent = (function () {
     };
     ComplaintComponent.prototype.closeComplaint = function () {
         var _this = this;
+        this.loader1 = true;
         this.cs.closeComplaint(this.selectedComplaint.id, this.closeForm.value).subscribe(function (response) {
             _this.complaints[_this.selectedIndex] = response;
             $('#myModal3').modal('hide');
         }, function (error) {
         });
+        this.loader1 = false;
     };
     ComplaintComponent.prototype.previousComplaint = function () {
         delete this.complaints;

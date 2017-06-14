@@ -13,9 +13,9 @@ var core_1 = require("@angular/core");
 require("rxjs/add/operator/toPromise");
 var Configuration = (function () {
     function Configuration() {
-        this.url = "https://cornerstone.ind-cloud.everdata.com";
-        this.baseUrl = "https://cornerstone.ind-cloud.everdata.com/";
-        this.Server = "https://cornerstone.ind-cloud.everdata.com/";
+        this.url = "https://cornerstone.njs.jelastic.vps-host.net";
+        this.baseUrl = "https://cornerstone.njs.jelastic.vps-host.net/";
+        this.Server = "https://cornerstone.njs.jelastic.vps-host.net/";
     }
     // set access_token after user login
     Configuration.prototype.setAccessToken = function () {
