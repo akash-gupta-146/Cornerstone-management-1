@@ -98,8 +98,8 @@ form input:hover {
 form input:focus {
   background-color: white;
   width: 300px;
-  color: #663399
-  
+  color: #ea212e;
+  font-weight:bold;
   
   ;
 }
