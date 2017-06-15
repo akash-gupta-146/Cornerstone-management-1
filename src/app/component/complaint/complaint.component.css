@@ -112,6 +112,9 @@ htlm, body
     width: 280px;
     word-break: break-all;
 }*/
+.example-search-input{
+    border-radius: 25px !important;
+}
 .panel.panel-chat .panel-footer
 {
     padding: 0;
@@ -289,4 +292,11 @@ h1{
         width: 40%;
     }
 
+<<<<<<< HEAD
+=======
+hr.style-line {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+>>>>>>> 3949e9a0df6e8ec293584a5f4d2efcb1f6219fae
 }
