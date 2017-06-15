@@ -11,3 +11,10 @@ h1{
 .badge{
     background-color: #ea212e;
 }
+
+.class{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+}

@@ -32,6 +32,7 @@ var PassedHomework = (function () {
         // this.nl.showLoader();
         this.loader = true;
         this.homeworkService.getOldHomework(this.currentPage).subscribe(function (data) {
+            console.log(data);
             _this.onSuccess(data);
         }, function (err) {
             // this.nl.hideLoader();

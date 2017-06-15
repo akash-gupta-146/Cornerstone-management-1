@@ -222,78 +222,8 @@ h1{
     font-weight: bold;
     letter-spacing: 0.1em;
 }
-/*card*/
 
-.card{
-    margin-left: 3%;
-    padding:  2% 4% ;
-    width: 22%;
-    box-shadow: 0px 2px 5px #c7c1c1, -2px 4px 5px #c7c1c1, 10px 8px 15px #c7c1c1;
-    float: left;
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    text-align: center;
-    
-}
-.card:hover{
-         box-shadow: 0px 2px 5px #c7c1c1, -2px 6px 8px #cec7c7, 15px 7px 15px #c7c1c1;
-}
-.image{
-    align-content: center;
-    width: 50%;
-    border-radius: 50% !important;
-}
 
-.glyphicon-pencil,.glyphicon-comment{
-    font-size: 20px;
-}
-.expand{
-    float: right;
-    padding-right: 2%;
-}
-.expand:hover{
-    color:#ea212e;
-}
-
-.name{
-    font-size: 15px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    display: block;
-    overflow: hidden;
-    
-}
-.class{
-    font-size: 15px;
-    color: grey;
-}
-
-.title{
-  text-align: left;
-  display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  display: block;
-  overflow: hidden;
-  margin-bottom: 4%;
-}
-
-/*card end*/
-/* start of desktop styles */
-@media screen and (max-width: 767px) {
-    .card{
-        width: 45%;
-        padding: 20px;
-    }
-
-}
-
-@media screen and (max-width: 479px) {
-     .card{
-         width: 100%;
-     }
-}
 
 /*modal for card*/
 .card-modal{
@@ -313,10 +243,16 @@ h1{
     font-size: 70%;
     color: gray;
 }
-
+.card-btn{
+    width: 100%;
+    border-radius: 25px;
+}
 
 
 /*modal for card end*/
+#myModal-card{
+    padding: 10px;
+}
 .card-modal{
     padding-top: 0;
 }
@@ -331,16 +267,26 @@ h1{
     color: #ea212e;
 }
 
-.card-modal row{
-    box-shadow: ;
+.modal-btn{
+    width: 100%;
+}
+/*modal media query*/
+@media screen and (max-width: 767px) {
+    #myModal-card{
+        width: 100%;
+    }
+ .modal-image{
+     width: 40%;
+
+}
 }
 
+@media screen and (max-width: 479px) {
+    #myModal-card{
+        width: 100%;
+    }
+    .modal-image{
+        width: 40%;
+    }
 
-hr.style-line {
- border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
 }

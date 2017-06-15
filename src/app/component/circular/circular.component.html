@@ -10,7 +10,7 @@
   <!-- Table -->
   <div class="panel-body">
     <div style="text-align: center" *ngIf="EmptyCirculars"><b>No Circular added to View</b></div>
-    <table class="table table-hover" *ngIf="!EmptyCirculars">
+    <!--<table class="table table-hover" *ngIf="!EmptyCirculars">
       <thead>
         <tr>
           <th>Title</th>
@@ -32,11 +32,52 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table>-->
+
     <div class="row text-center">
       <loader [condition]="loader"></loader>
     </div>
+
+      <div class="container card" *ngFor="let circular of circulars">
+      <div class="row">
+        <div class="col-sm-6">
+          <span [style.background]="circular.circularTypeColor" class="badge">{{circular.circularTypeName}}</span>
+        </div>
+        <div class="col-sm-6">
+        <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(c)" data-toggle="modal" data-target="#myModal-card"></span>
+        </div>
+      </div>
+      <!--<div class="row">
+        <div class="col-sm-6" *ngIf="!complaintStatus">
+          <span [style.background]="c.statusColor" class="badge">{{c.statusName}}</span>
+        </div>
+        <div class="col-sm-6">{{c.priorityName}}</div>
+      </div>-->
+      <div class="row">
+        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png">
+      </div>
+      <div class="row name">{{circular.employeeName}}</div>
+      <div class="row class"><label class="heading">For</label>
+      <div  class="class">{{circular.standards}}</div>
+      <span *ngIf="!circular.standards">School</span>
+      </div><hr class="style-line">
+      <div class="row title">{{circular.title}}</div>
+      <!--<div class="row">
+        <div class="col-sm-6 edit" *ngIf="!(complaintStatus == 4 || complaintStatus == 5)">
+          <a [ngClass]="{'disabled-click' : c.statusId == 4}" (click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
+              class="action"><i class="glyphicon glyphicon-pencil"></i>
+          </a>
+        </div>
+        <div class="col-sm-6 comment">
+          <a onclick="$('.panel.panel-chat').show();" (click)="getComplaintCommentById(c)" class="action"><i class="glyphicon glyphicon-comment"></i>
+          </a>
+        </div>
+      </div>-->
+    </div>
+    <!--end cards-->
   </div>
+
+
   <div class="panel-footer">
     <!--<nav aria-label="Page navigation example">
       <ul class="pagination">

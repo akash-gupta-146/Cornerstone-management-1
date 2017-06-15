@@ -31,6 +31,7 @@ export class PassedHomework implements OnInit {
     // this.nl.showLoader();
     this.loader = true;
     this.homeworkService.getOldHomework(this.currentPage).subscribe((data) => {
+      console.log(data);
       this.onSuccess(data);
     }, (err) => {
       // this.nl.hideLoader();
