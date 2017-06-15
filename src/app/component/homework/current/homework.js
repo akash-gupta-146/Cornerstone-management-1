@@ -34,6 +34,7 @@ var CurrentHomework = (function () {
         // this.nl.showLoader();
         this.loader = true;
         this.homeworkService.getHomework(this.currentPage).subscribe(function (data) {
+            console.log(data);
             _this.onSuccess(data);
         }, function (err) {
             // this.nl.hideLoader();

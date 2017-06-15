@@ -26,6 +26,7 @@ export class CircularComponent implements OnInit {
   private getCirculars() {
     this.loader = true;
     this.circularService.GetCirculars(this.currentPage).subscribe((res) => {
+      console.log(res);
       this.onSuccess(res);
     }, (err) => {
       this.onError(err);

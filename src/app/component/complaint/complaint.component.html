@@ -12,7 +12,7 @@
     </div>
 
     <div style="text-align: center" *ngIf="EmptyComplaints"><b>No Complaint is added to View</b></div>
-    <table class="table table-hover" *ngIf="!EmptyComplaints">
+    <!--<table class="table table-hover" *ngIf="!EmptyComplaints">
       <thead>
         <tr>
           <th>Id</th>
@@ -68,11 +68,11 @@
         <div class="col-sm-6">{{c.priorityName}}</div>
       </div>-->
       <div class="row">
-        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png">
+        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png" style="border-radius:50% !important">
       </div>
       <div class="row name">{{c.studentName}}</div>
-      <div class="row class">{{c.studentStandardName}}</div><hr>
-      <div class="row title">{{c.title}}</div>
+      <div class="row class">{{c.studentStandardName}}</div><hr class="style-line">
+      <div class="row title">{{c.title}}</div><hr class="style-line">
       <div class="row">
         <div class="col-sm-6 edit" *ngIf="!(complaintStatus == 4 || complaintStatus == 5)">
           <a [ngClass]="{'disabled-click' : c.statusId == 4}" (click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
@@ -95,7 +95,7 @@
       </div>
       <div class="modal-body card-modal" >
         
-        <div class="row modal-heading">
+        <div class="row modal-heading" style="margin-right:-15px;margin-left:-15px">
           <div class="col-sm-4">
             <div class="row comment-modal">
             <label class="heading">Comments</label>
@@ -116,14 +116,11 @@
         <div class="row modal-name">{{selectedComplaint.studentName}}
           <div class="modal-class">{{selectedComplaint.studentStandardName}}</div>
         </div>
-        <div class="row modal-description"><label class="heading">Description</label><div class="result">{{selectedComplaint.description}}</div></div><hr >
-        <div class="row">
-          <div class="col-sm-6" ><label class="heading">Created At</label><div class="result">{{selectedComplaint.createdAt | date: "shortDate"}}</div></div>
-          <div class="col-sm-6" ><label class="heading">Closed On</label><div class="result">{{selectedComplaint.closedOn | date: "shortDate"}}</div></div>
-        </div><hr class="style-line">
-        <div class="row modal-closed-on" *ngIf="selectedComplaint.closedOn" style="align:left">
-          <label class="heading">Root Cause  </label><div class="result"> {{selectedComplaint.rca}}</div>
-        </div><hr class="style-line">
+        <div class="row modal-description" style="align:left;margin-left:10px;margin-right:10px;">
+          <div class="row">{{selectedComplaint.description}}</div>
+          <div class="row " style="text-align:left"><label class="heading " >Root Cause  </label><span class="result"> {{selectedComplaint.rca}}</span></div>
+        </div>
+        <hr class="style-line">
         <div class="row complaint-category">
           <div class="col-sm-6">
             <label class="heading">Complaint-Category</label>
@@ -131,21 +128,25 @@
           </div>
           <div class="col-sm-6" >
             <label class="heading">Complaint-Against</label>
-            <div class="result">{{selectedComplaint.againstEmployeeNam}}</div>
+            <div class="result">{{selectedComplaint.againstEmployeeNam}}<div *ngIf="!selectedComplaint.againstEmployeeNam">-</div></div>
           </div>
+        </div><hr class="style-line">
+        <div class="row">
+          <div class="col-sm-6" ><label class="heading">Created At</label><div class="result">{{selectedComplaint.createdAt | date: "shortDate"}}</div></div>
+          <div class="col-sm-6" ><label class="heading">Closed On</label><div class="result">{{selectedComplaint.closedOn | date: "shortDate"}}</div></div>
         </div>
       </div>
       <div class="modal-footer">
         <div class="row">
           <div class="col-sm-4"> 
             <button [ngClass]="{'disabled-click' : selectedComplaint.statusId == 4}"(click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
-              class="btn btn-danger " data-dismiss="modal">Edit</button>
+              class="btn btn-danger modal-btn " data-dismiss="modal">Edit</button>
           </div>
           <div class="col-sm-4">
-            <button onclick="$('.panel.panel-chat').show();"  (click)="getComplaintCommentById(c)" class="btn btn-danger" data-dismiss="modal" >Comment</button>
+            <button onclick="$('.panel.panel-chat').show();"  (click)="getComplaintCommentById(c)" class="btn btn-danger modal-btn" data-dismiss="modal" >Comment</button>
           </div>
           <div class="col-sm-4">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger modal-btn" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

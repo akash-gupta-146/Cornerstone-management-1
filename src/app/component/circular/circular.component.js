@@ -27,6 +27,7 @@ var CircularComponent = (function () {
         var _this = this;
         this.loader = true;
         this.circularService.GetCirculars(this.currentPage).subscribe(function (res) {
+            console.log(res);
             _this.onSuccess(res);
         }, function (err) {
             _this.onError(err);

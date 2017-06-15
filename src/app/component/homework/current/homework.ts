@@ -30,6 +30,7 @@ export class CurrentHomework implements OnInit {
     // this.nl.showLoader();
     this.loader = true;
     this.homeworkService.getHomework(this.currentPage).subscribe((data) => {
+      console.log(data);
       this.onSuccess(data);
     }, (err) => {
       // this.nl.hideLoader();

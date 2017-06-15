@@ -3,7 +3,7 @@
     <!--<div class="panel-heading">Current Homework</div>-->
     <div class="panel-body" id="accordion">
       <div style="text-align: center" *ngIf="EmptyHomeworks" ><b>No Homework</b></div>
-      <table class="table table-hover" *ngIf="!EmptyHomeworks" >
+      <!--<table class="table table-hover" *ngIf="!EmptyHomeworks" >
         <thead>
           <tr>
             <th>Id</th>
@@ -31,12 +31,48 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table>-->
+
+            <div class="container card" *ngFor="let a of homeworks; let i = index;">
+      <div class="row">
+        <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(c)" data-toggle="modal" data-target="#myModal-card" style="margin-bottom:10px;"></span>
+      </div>
+      <!--<div class="row">
+        <div class="col-sm-6" *ngIf="!complaintStatus">
+          <span [style.background]="c.statusColor" class="badge">{{c.statusName}}</span>
+        </div>
+        <div class="col-sm-6">{{c.priorityName}}</div>
+      </div>-->
+      <div class="row">
+        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png" style="border-radius:0px !important;width:100%">
+      </div>
+      <!--<div class="row name">{{circular.employeeName}}</div>-->
+      <div class="row class"><label class="heading">For</label>
+        <span  class="class">{{ a.standardName }}</span>
+      </div><hr class="style-line">
+      <div class="row title" style="text-align:center"><label >Subject : </label><span>{{a.subjectName}}</span></div>
+        <div class="row">
+          <label class="Due Date :"></label>
+          <span class="badge" style="background-color:gray">Due Date: {{a.dueDate}} {{a.dueMonth}}</span>
+        </div>
+      <!--<div class="row">
+        <div class="col-sm-6 edit" *ngIf="!(complaintStatus == 4 || complaintStatus == 5)">
+          <a [ngClass]="{'disabled-click' : c.statusId == 4}" (click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
+              class="action"><i class="glyphicon glyphicon-pencil"></i>
+          </a>
+        </div>
+        <div class="col-sm-6 comment">
+          <a onclick="$('.panel.panel-chat').show();" (click)="getComplaintCommentById(c)" class="action"><i class="glyphicon glyphicon-comment"></i>
+          </a>
+        </div>
+      </div>-->
+    </div>
       <div class="row text-center">
         <loader [condition]="loader"></loader>
       </div>
     </div>
     
+
     <div class="panel-footer">
       <!--<nav aria-label="Page navigation example">
         <ul class="pagination">

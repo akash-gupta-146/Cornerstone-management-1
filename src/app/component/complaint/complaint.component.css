@@ -225,78 +225,8 @@ h1{
     font-weight: bold;
     letter-spacing: 0.1em;
 }
-/*card*/
 
-.card{
-    margin-left: 3%;
-    padding:  2% 4% ;
-    width: 22%;
-    box-shadow: 0px 2px 5px #c7c1c1, -2px 4px 5px #c7c1c1, 10px 8px 15px #c7c1c1;
-    float: left;
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    text-align: center;
-    
-}
-.card:hover{
-         box-shadow: 0px 2px 5px #c7c1c1, -2px 6px 8px #cec7c7, 15px 7px 15px #c7c1c1;
-}
-.image{
-    align-content: center;
-    width: 50%;
-    border-radius: 50% !important;
-}
 
-.glyphicon-pencil,.glyphicon-comment{
-    font-size: 20px;
-}
-.expand{
-    float: right;
-    padding-right: 2%;
-}
-.expand:hover{
-    color:#ea212e;
-}
-
-.name{
-    font-size: 15px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    display: block;
-    overflow: hidden;
-    
-}
-.class{
-    font-size: 15px;
-    color: grey;
-}
-
-.title{
-  text-align: left;
-  display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  display: block;
-  overflow: hidden;
-  margin-bottom: 4%;
-}
-
-/*card end*/
-/* start of desktop styles */
-@media screen and (max-width: 767px) {
-    .card{
-        width: 45%;
-        padding: 20px;
-    }
-
-}
-
-@media screen and (max-width: 479px) {
-     .card{
-         width: 100%;
-     }
-}
 
 /*modal for card*/
 .card-modal{
@@ -316,10 +246,16 @@ h1{
     font-size: 70%;
     color: gray;
 }
-
+.card-btn{
+    width: 100%;
+    border-radius: 25px;
+}
 
 
 /*modal for card end*/
+#myModal-card{
+    padding: 10px;
+}
 .card-modal{
     padding-top: 0;
 }
@@ -334,22 +270,33 @@ h1{
     color: #ea212e;
 }
 
-.card-modal row{
-    box-shadow: ;
+.modal-btn{
+    width: 100%;
 }
-/*hr.style-line:before { 
-  display: block; 
-  content: ""; 
-  height: 30px; 
-  margin-top: -31px; 
-  border-style: solid; 
-  border-color: #8c8b8b; 
-  border-width: 0 0 1px 0; 
-  border-radius: 20px; 
-}*/
+/*modal media query*/
+@media screen and (max-width: 767px) {
+    #myModal-card{
+        width: 100%;
+    }
+ .modal-image{
+     width: 40%;
 
+}
+}
+
+@media screen and (max-width: 479px) {
+    #myModal-card{
+        width: 100%;
+    }
+    .modal-image{
+        width: 40%;
+    }
+
+<<<<<<< HEAD
+=======
 hr.style-line {
 	height: 10px;
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+>>>>>>> 3949e9a0df6e8ec293584a5f4d2efcb1f6219fae
 }
