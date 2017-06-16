@@ -61,4 +61,9 @@ form{
 .modal-description{
   padding: 2px 30px;
 }
+
+.modal-body{
+  padding-left:0px !important;
+  padding-right:0px !important;
+}
 /*card-modal end*/
