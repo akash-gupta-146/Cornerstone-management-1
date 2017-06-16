@@ -213,7 +213,7 @@ a{
 /*styling of horizontal lines*/
 
 hr.style-line {
- border: 0; 
+  border: 0; 
   height: 1px; 
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -233,13 +233,31 @@ hr.style-line {
     color: white;
 }
 
+.modal-image{
+    display: block;
+    margin: auto;
+    width: 100%;
+    border-radius: 100% !important;
+    width: 120px;
+    height: 120px;
+}
+.modal-name{
+    font-size: 130%;
+}
+
+.modal-class{
+    font-size: 70%;
+    color: gray;
+}
+
 /*modal media query*/
 @media screen and (max-width: 767px) {
     #myModal-card{
         width: 100%;
     }
  .modal-image{
-     width: 40%;
+     width: 80px;
+     height: 80px;
 
 }
 }
@@ -249,5 +267,7 @@ hr.style-line {
         width: 100%;
     }
     .modal-image{
-        width: 40%;
+        width: 50px;
+        width: 50px;
     }
+}

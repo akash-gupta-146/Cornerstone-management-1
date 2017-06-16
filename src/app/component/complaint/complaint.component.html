@@ -62,7 +62,7 @@
               <div class="result badge">{{selectedComplaint.statusName}}</div>
             </div>
           </div>
-          <div class="col-sm-4"><img src="https://www.artconversation.com/core/images/default/default_avatar_large.png" class="modal-image"></div>
+          <div class="col-sm-4"><img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
           <div class="col-sm-4">
             <div class="row" *ngIf="selectedComplaint.assignedEmployeeName">@{{selectedComplaint.assignedEmployeeName}}</div><br>
             <div class="row priority-modal"><label class="heading">Priority</label><div>{{selectedComplaint.priorityName}}</div></div>
