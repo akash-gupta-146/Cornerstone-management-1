@@ -24,6 +24,7 @@ export class AccountComponent implements OnInit {
     public url: string = "";
     public newPicTimestamp: any;
     public imgFile: any;
+    public loader:boolean = false;
    
     constructor(public lg: LoggedInGuard,
         public cs: CommonService,
@@ -56,17 +57,17 @@ export class AccountComponent implements OnInit {
 
       public getFile(event: any) {
         this.imgFile = event.srcElement.files[0];
-        console.log(this.imgFile);
-
     }
 
     public submitAccountDetails(details: any) {
-        
+         this.loader = true;
+
         let formData = new FormData();
         formData.append('file', this.imgFile);
         this.au.uploadImage(formData).subscribe((res: any) => {
             localStorage.setItem('picUrl', localStorage.getItem('fileUrl') + "/" + res.fileTimestamp);
             $('#myModal').modal('hide');
+             this.loader = false;
         })
 
     }

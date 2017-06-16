@@ -8,25 +8,32 @@ import { ChartService } from '../../providers/chart.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  public complaintByStatus:any;
-  public suggestionByStatus:any;
-  public complaintByCategoryAndStatus:any;
-  public categoryAndStatusChartOptions:any;
-  public complaintByStatusChartOptions:any;
-  public suggestionByStatusChartOptions:any;
+  public complaintByStatus: any;
+  public suggestionByStatus: any;
+  public complaintByCategoryAndStatus: any;
+  public categoryAndStatusChartOptions: any;
+  public complaintByStatusChartOptions: any;
+  public suggestionByStatusChartOptions: any;
+  public loader: boolean = false;
+  public loader1: boolean = false;
+  public responseByStatus: any;
+  public responseByCategoryAndStatus: any;
+  public responseSuggestionByStatus: any;
 
-  public responseByStatus:any;
-  public responseByCategoryAndStatus:any;
-  public responseSuggestionByStatus:any;
   constructor(public cs: ChartService, private router: Router, private zone: NgZone) {
+    this.loader = true;
+    this.loader1 = true;
     cs.getComplaintByCategoryAndStatus().subscribe((response) => {
       this.responseByCategoryAndStatus = response
       this.chartByCategoryAndStatus();
     });
+    
     cs.getComplaintByStatus().subscribe((response) => {
       this.responseByStatus = response
       this.chartByStatus();
+     
     });
+    
     // cs.getSuggestionByStatus().subscribe((res) => {
     //   this.responseSuggestionByStatus = res;
     //   this.chartBySuggestionStatus();
@@ -35,7 +42,7 @@ export class DashboardComponent {
     // });
   }
 
-  onSelected(data:any) {
+  onSelected(data: any) {
     var dataTable = data.wrapper.getDataTable();
     var parts = data.e.targetID.split('#');
     switch (data.chartId.id) {
@@ -43,28 +50,28 @@ export class DashboardComponent {
         if (parts[0] == "slice") {
           this.zone.run(() => this.router.navigate(['/complaint/status/' + dataTable.getValue(parseInt(parts[1]), 2)]));
         }
-        else if (parts[0] == "legendentry")
-          console.log("legendentry : " + parts[1]);
+        else if (parts[0] == "legendentry"){
+
+        }
         break;
       case "EWNS_suggestion":
         if (parts[0] == "slice") {
           this.zone.run(() => this.router.navigate(['/suggestion/status/' + dataTable.getValue(parseInt(parts[1]), 2)]));
         }
-        else if (parts[0] == "legendentry")
-          console.log("legendentry : " + parts[1]);
+        else if (parts[0] == "legendentry") {
+          
+        }
         break;
       case "chart_by_category_status":
         if (parts[0] == "vAxis") {
           var categoryId = dataTable.getValue(parseInt(parts[parts.indexOf('label') + 1]), 1);
           this.zone.run(() => this.router.navigate(['/complaint/category-status/category/' + categoryId]));
-          console.log("categoryId :" + categoryId);
         }
         else if (parts[0] == "bar") {
-          console.log(parts);
           var categoryId = dataTable.getValue(parseInt(parts[2]), 1);
           var statusId = dataTable.getValue(parseInt(parts[2]), (parseInt(parts[1]) + 1) * 2 + 1);
           this.zone.run(() => this.router.navigate(['complaint/category-status/' + categoryId + '/' + statusId]));
-          console.log("categoryId :" + categoryId + ",statusId :" + statusId);
+
         }
         else if (parts[0] == "legendentry") {
           for (var i = 0; i < this.responseByCategoryAndStatus.length; i++) {
@@ -80,19 +87,20 @@ export class DashboardComponent {
               }
             }
           data.wrapper.draw();
-          console.log("legendentry : " + parts[1]);
         }
         break;
     }
   }
 
-  onResize(event:any) {
+  onResize(event: any) {
+    
     this.chartByStatus();
     this.chartByCategoryAndStatus();
-  }
+    
+}
 
   chartByStatus() {
-    var data:any = [];
+    var data: any = [];
     data.push(['Status', 'complaint', { type: 'number', role: 'scope' }]);
     for (let i = 0; i < this.responseByStatus.length; i++) {
       data.push([this.responseByStatus[i].statusName, this.responseByStatus[i].count, this.responseByStatus[i].statusId]);
@@ -110,11 +118,13 @@ export class DashboardComponent {
       chartArea: { left: '10%', height: "40%", width: "40%", bottom: '10%', right: '10%', top: '0%' },
       is3D: true
     }
+     this.loader1 = false;
   }
 
 
   chartByCategoryAndStatus() {
-    var data:any = [[]];
+    
+    var data: any = [[]];
     data[0].push('categoryName');
     data[0].push({ type: 'number', role: 'scope' });
     for (let i = 0; i < this.responseByCategoryAndStatus[0].statusResults.length; i++) {
@@ -144,10 +154,11 @@ export class DashboardComponent {
       isStacked: 'true', chartArea: {},
       colors: ['#4CAF50', '#2196f3', '#FFEB3B', '#F48FB1', '#EF5350', '#9C27B0', '#FF8C00']
     };
+    this.loader=false;
   }
 
   chartBySuggestionStatus() {
-    var data:any = [];
+    var data: any = [];
     data.push(['Status', 'suggestion', { type: 'number', role: 'scope' }]);
     for (let i = 0; i < this.responseSuggestionByStatus.length; i++) {
       data.push([this.responseSuggestionByStatus[i].statusName, this.responseSuggestionByStatus[i].count, this.responseSuggestionByStatus[i].statusId]);

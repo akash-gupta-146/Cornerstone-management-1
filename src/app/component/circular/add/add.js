@@ -28,7 +28,7 @@ var AddCircular = (function () {
     };
     AddCircular.prototype.onDueDate = function (e) {
         if (new Date(e.target.value) < new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())) {
-            alert("Invalid Date");
+            alert("Please choose an upcoming date from the calendar.");
             this.circular.controls['date'].patchValue(this.commonService.getTomorrow());
         }
     };
@@ -89,7 +89,6 @@ var AddCircular = (function () {
         // this.circular.controls['standardIds'].reset();
     };
     AddCircular.prototype.circularSubmit = function () {
-        console.log(this.circular.value);
         this.submitProgress = true;
         this.onSubmit();
     };
@@ -107,7 +106,6 @@ var AddCircular = (function () {
             _this.submitProgress = false;
             _this.circular = _this.initForm();
             $('#circularModal').modal('show');
-            console.log("Circular created successfully");
         }, function (err) {
         });
     };
