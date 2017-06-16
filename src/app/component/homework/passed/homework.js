@@ -25,6 +25,7 @@ var PassedHomework = (function () {
         this.noMore = false;
     }
     PassedHomework.prototype.ngOnInit = function () {
+        this.fileUrl = localStorage.getItem("fileUrl") + "/";
         this.getHomeworks();
     };
     PassedHomework.prototype.getHomeworks = function () {
@@ -117,12 +118,15 @@ var PassedHomework = (function () {
         this.currentPage -= 1;
         // this.nl.onError(err);
     };
+    PassedHomework.prototype.seletToExpand = function (a) {
+        this.selectedHomework = a;
+    };
     return PassedHomework;
 }());
 PassedHomework = __decorate([
     core_1.Component({
         selector: 'passed-homework',
-        //styleUrls:['../homework.component.css'],
+        styleUrls: ['./../homework.component.css'],
         templateUrl: './homework.html'
     }),
     __metadata("design:paramtypes", [homework_service_1.HomeworkService])

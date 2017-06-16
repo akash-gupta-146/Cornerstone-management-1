@@ -229,23 +229,6 @@ h1{
 
 
 /*modal for card*/
-.card-modal{
-    text-align: center;
-}
-.modal-image{
-    display: block;
-    margin: auto;
-    width: 100%;
-    border-radius: 50% !important;
-}
-.modal-name{
-    font-size: 130%;
-}
-
-.modal-class{
-    font-size: 70%;
-    color: gray;
-}
 .card-btn{
     width: 100%;
     border-radius: 25px;
@@ -253,16 +236,6 @@ h1{
 
 
 /*modal for card end*/
-#myModal-card{
-    padding: 10px;
-}
-.card-modal{
-    padding-top: 0;
-}
-.modal-heading,.modal-name{
-    background-color: #3a3838;
-    color: white;
-}
 
 
 .heading{
@@ -273,30 +246,7 @@ h1{
 .modal-btn{
     width: 100%;
 }
-/*modal media query*/
-@media screen and (max-width: 767px) {
-    #myModal-card{
-        width: 100%;
-    }
- .modal-image{
-     width: 40%;
 
-}
-}
-
-@media screen and (max-width: 479px) {
-    #myModal-card{
-        width: 100%;
-    }
-    .modal-image{
-        width: 40%;
-    }
-
-<<<<<<< HEAD
-=======
-hr.style-line {
-	height: 10px;
-	border: 0;
-	box-shadow: 0 10px 10px -10px #8c8b8b inset;
->>>>>>> 3949e9a0df6e8ec293584a5f4d2efcb1f6219fae
+.description{
+    padding: 10px;
 }

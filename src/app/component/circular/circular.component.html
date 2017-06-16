@@ -10,29 +10,6 @@
   <!-- Table -->
   <div class="panel-body">
     <div style="text-align: center" *ngIf="EmptyCirculars"><b>No Circular added to View</b></div>
-    <!--<table class="table table-hover" *ngIf="!EmptyCirculars">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Start At</th>
-          <th>Created By</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let circular of circulars" class="container-border"> 
-        <tr data-toggle="collapse" [attr.data-target]="'#' + circular.id">
-          <td>{{circular.title}}</td>
-          <td>{{circular.start}}</td>
-          <td>{{circular.employeeName}}</td>
-          <td><span [style.background]="circular.circularTypeColor" class="badge">{{circular.circularTypeName}}</span></td>
-        </tr>
-        <tr [attr.id]="circular.id" class="collapse">
-          <td colspan="5" style="border:none;">
-            <b>Description : </b>{{circular.description}}
-          </td>
-        </tr>
-      </tbody>
-    </table>-->
 
     <div class="row text-center">
       <loader [condition]="loader"></loader>
@@ -40,12 +17,7 @@
 
       <div class="container card" *ngFor="let circular of circulars">
       <div class="row">
-        <div class="col-sm-6">
-          <span [style.background]="circular.circularTypeColor" class="badge">{{circular.circularTypeName}}</span>
-        </div>
-        <div class="col-sm-6">
-        <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(c)" data-toggle="modal" data-target="#myModal-card"></span>
-        </div>
+        <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(circular)" data-toggle="modal" data-target="#myModal-card"></span>
       </div>
       <!--<div class="row">
         <div class="col-sm-6" *ngIf="!complaintStatus">
@@ -54,7 +26,7 @@
         <div class="col-sm-6">{{c.priorityName}}</div>
       </div>-->
       <div class="row">
-        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png">
+        <img class="image" [attr.src]="fileUrl + circular.employeePicUrl">
       </div>
       <div class="row name">{{circular.employeeName}}</div>
       <div class="row class"><label class="heading">For</label>
@@ -92,3 +64,30 @@
     <button (click)="nextCircular()" class="btn right btn-danger nav-btn" [disabled]="EmptyCirculars || noMore">Next</button>    
   </div>
 </div>
+
+<div class="modal fade" id="myModal-card"tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngIf="selectedCircular">
+      <div class="modal-header" >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">{{selectedCircular.title}}</h4>
+      </div>
+      <div class="modal-body card-modal" >
+        <div class="row modal-heading">
+          <img  class="modal-image" [attr.src]="fileUrl + selectedCircular.employeePicUrl" style="margin-top:10px;">           
+        </div>
+        <div class="row modal-name">{{selectedCircular.employeeName}}
+          <div class="modal-class" *ngIf="selectedCircular.standards"><label>For : </label><span>{{selectedCircular.standards}}</span><span *ngIf="!selectedCircular.standards"></span></div>
+        </div>
+        <div class="row modal-description">{{selectedCircular.description}}</div><hr class="style-line">
+        <div class="row">
+          <div class="col-sm-6" ><label class="heading">Created At</label><div class="result">{{selectedCircular.createdAt | date: "shortDate"}}</div></div>
+          <div class="col-sm-6" ><label class="heading">Start date</label><div class="result">{{selectedCircular.start | date: "shortDate"}}</div></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

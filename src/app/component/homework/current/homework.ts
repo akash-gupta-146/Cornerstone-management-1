@@ -6,12 +6,12 @@ import { HomeworkService } from '../../../providers/homework.service';
 @Component({
   selector: 'current-homework',
   templateUrl: './homework.html',
-  //styleUrls:['../homework.component.css']
+  styleUrls:['./../homework.component.css']
 })
 
 export class CurrentHomework implements OnInit {
-
-  public fileUrl : string = localStorage.getItem("fileUrl") + "/";
+  public selectedHomework:any;
+  public fileUrl : string;
   public title: string = "Homework";
   public icon: string = "book";
   public currentPage = 1;
@@ -20,9 +20,11 @@ export class CurrentHomework implements OnInit {
   public EmptyHomeworks: boolean = false;
   monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
+
   constructor(private homeworkService: HomeworkService) { }
 
   ngOnInit(): void {
+    this.fileUrl = localStorage.getItem("fileUrl") + "/";
     this.getHomeworks();
   }
 
@@ -69,6 +71,10 @@ export class CurrentHomework implements OnInit {
     delete this.homeworks;
     this.currentPage += 1;
     this.getHomeworks();
+  }
+
+ public seletToExpand(a:any){
+    this.selectedHomework = a;
   }
 
   // public doInfinite(infiniteScroll) {

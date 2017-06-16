@@ -12,50 +12,6 @@
     </div>
 
     <div style="text-align: center" *ngIf="EmptyComplaints"><b>No Complaint is added to View</b></div>
-    <!--<table class="table table-hover" *ngIf="!EmptyComplaints">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Title</th>
-          <th>StudentName</th>
-          <th *ngIf="!complaintStatus">Status</th>
-          <th>Priority</th>
-          <th *ngIf="!(complaintStatus == 4 || complaintStatus == 6)">Edit</th>
-          <th>Comment</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let c of complaints; let i = index;" class="container-border">
-        <tr>
-          <td class="action" data-toggle="collapse" [attr.data-target]="'#' + c.id" data-parent="#accordion"><span class="cid"><a>{{c.id}}</a></span></td>
-          <td>{{c.title}}</td>
-          <td>{{c.studentName}} - {{c.studentStandardName}}</td>
-          <td *ngIf="!complaintStatus"><span [style.background]="c.statusColor" class="badge">{{c.statusName}}</span></td>
-          <td>{{c.priorityName}}</td>
-          <td *ngIf="!(complaintStatus == 4 || complaintStatus == 5)"><a [ngClass]="{'disabled-click' : c.statusId == 4}" (click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
-              class="action"><i class="glyphicon glyphicon-pencil"></i></a></td>
-          <td class="center-align"><a onclick="$('.panel.panel-chat').show();" (click)="getComplaintCommentById(c)" class="action"><i class="glyphicon glyphicon-comment"></i></a></td>
-        </tr>
-        <tr [attr.id]="c.id" class="collapse">
-          <td colspan="6" style="border:none;">
-            <b>Description : </b>{{c.description}}
-            <p *ngIf="c.closedOn">
-              <b>Closed On : </b> {{c.closedOn | date: "shortDate"}} <br/>
-              <b>Root Cause : </b> {{c.rca}}
-            </p>
-            <p *ngIf="c.againstCategoryName">
-              <b>Complaint Against : </b> {{c.againstCategoryName}}
-            </p>
-            <p *ngIf="c.againstEmployeeName">
-              <b>Complaint Against : </b> {{c.againstEmployeeName}}
-            </p>
-          </td>
-          <td style="border:none;">
-            <button type="button" *ngIf="c.statusId != 4" (click)="selectedComplaint = c; selectedIndex = in;" data-toggle="modal" data-target="#myModal3">Close</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>-->
     <!--cards -->
     <div class="container card" *ngFor="let c of complaints; let i = index;">
       <div class="row">
@@ -68,7 +24,7 @@
         <div class="col-sm-6">{{c.priorityName}}</div>
       </div>-->
       <div class="row">
-        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png" style="border-radius:50% !important">
+        <img class="image" [attr.src]="fileUrl + c.studentPicUrl" style="border-radius:50% !important">
       </div>
       <div class="row name">{{c.studentName}}</div>
       <div class="row class">{{c.studentStandardName}}</div><hr class="style-line">
@@ -106,7 +62,7 @@
               <div class="result badge">{{selectedComplaint.statusName}}</div>
             </div>
           </div>
-          <div class="col-sm-4"><img src="https://www.artconversation.com/core/images/default/default_avatar_large.png" class="modal-image"></div>
+          <div class="col-sm-4"><img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
           <div class="col-sm-4">
             <div class="row" *ngIf="selectedComplaint.assignedEmployeeName">@{{selectedComplaint.assignedEmployeeName}}</div><br>
             <div class="row priority-modal"><label class="heading">Priority</label><div>{{selectedComplaint.priorityName}}</div></div>

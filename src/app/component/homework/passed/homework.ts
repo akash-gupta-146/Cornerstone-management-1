@@ -4,12 +4,13 @@ import { HomeworkService } from '../../../providers/homework.service';
 
 @Component({
   selector: 'passed-homework',
-  //styleUrls:['../homework.component.css'],
+  styleUrls:['./../homework.component.css'],
   templateUrl: './homework.html'
 })
 
 export class PassedHomework implements OnInit {
 
+  public fileUrl : string;
   public title: string = 'Homework';
   public icon: string = "book";
   public EmptyHomeworks = false;
@@ -17,6 +18,7 @@ export class PassedHomework implements OnInit {
   currentPage = 1;
   loader:boolean = false;
   monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  public selectedHomework:any;
 
   constructor(private homeworkService: HomeworkService,
               // private nl: CustomService
@@ -24,6 +26,7 @@ export class PassedHomework implements OnInit {
   }
 
   ngOnInit() : void {
+    this.fileUrl = localStorage.getItem("fileUrl") + "/";
     this.getHomeworks();
   }
 
@@ -117,5 +120,10 @@ export class PassedHomework implements OnInit {
     this.currentPage -= 1;
     // this.nl.onError(err);
   }
+
+   public seletToExpand(a:any){
+    this.selectedHomework = a;
+  }
+
 
 }

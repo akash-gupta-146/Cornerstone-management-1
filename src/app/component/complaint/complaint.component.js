@@ -62,6 +62,7 @@ var ComplaintComponent = (function () {
         }
     }
     ComplaintComponent.prototype.ngOnInit = function () {
+        this.fileUrl = localStorage.getItem("fileUrl") + "/";
         this.fetchComplaints();
         this.getEditInfo();
         this.loadForm();

@@ -21,6 +21,7 @@ var CircularComponent = (function () {
         this.loader = false;
     }
     CircularComponent.prototype.ngOnInit = function () {
+        this.fileUrl = localStorage.getItem("fileUrl") + "/";
         this.getCirculars();
     };
     CircularComponent.prototype.getCirculars = function () {
@@ -58,6 +59,14 @@ var CircularComponent = (function () {
         delete this.circulars;
         this.currentPage += 1;
         this.getCirculars();
+    };
+    // public onCircularSelected(circular) {
+    //   this.circularService.GetparticularCircular(circular.id).subscribe((res) => {
+    //   }, (err) => {
+    //   })
+    // }
+    CircularComponent.prototype.seletToExpand = function (circular) {
+        this.selectedCircular = circular;
     };
     return CircularComponent;
 }());
