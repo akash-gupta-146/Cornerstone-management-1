@@ -30,12 +30,12 @@
       <div class="row class">{{c.studentStandardName}}</div><hr class="style-line">
       <div class="row title">{{c.title}}</div><hr class="style-line">
       <div class="row">
-        <div class="col-sm-6 edit" *ngIf="!(complaintStatus == 4 || complaintStatus == 5)">
+        <div class="col-sm-6 col-xs-6 edit" *ngIf="!(complaintStatus == 4 || complaintStatus == 5)">
           <a [ngClass]="{'disabled-click' : c.statusId == 4}" (click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
               class="action"><i class="glyphicon glyphicon-pencil"></i>
           </a>
         </div>
-        <div class="col-sm-6 comment">
+        <div class="col-sm-6 col-xs-6 comment">
           <a onclick="$('.panel.panel-chat').show();" (click)="getComplaintCommentById(c)" class="action"><i class="glyphicon glyphicon-comment"></i>
           </a>
         </div>
@@ -98,14 +98,14 @@
       </div>
       <div class="modal-footer">
         <div class="row">
-          <div class="col-sm-4"> 
+          <div class="col-sm-4 col-xs-4"> 
             <button [ngClass]="{'disabled-click' : selectedComplaint.statusId == 4}"(click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
               class="btn btn-danger modal-btn " data-dismiss="modal">Edit</button>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 col-xs-4">
             <button onclick="$('.panel.panel-chat').show();"  (click)="getComplaintCommentById(c)" class="btn btn-danger modal-btn" data-dismiss="modal" >Comment</button>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 col-xs-4">
             <button type="button" class="btn btn-danger modal-btn" data-dismiss="modal">Close</button>
           </div>
         </div>

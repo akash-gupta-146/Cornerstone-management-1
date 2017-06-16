@@ -49,16 +49,18 @@
       </div>
       <form [formGroup]="uploadPicForm" (submit)="submitAccountDetails(d)">
         <div class="modal-body">
+          <div class="row text-center">
+            <loader [condition]="loader"></loader>
+          </div>
           <div class="form-group">
-        <input type="file" class="form-control-file" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp" (change)="getFile($event)">
+        <input type="file" class="form-control-file" accept="image/*" formControlName="imgFile" id="exampleInputFile" aria-describedby="fileHelp" (change)="getFile($event)">
       </div>
-      
         </div>
         <div class="modal-footer">
           <button type="Submit" class="btn btn-default">Submit</button>
         </div>
-        </form>
-    
+      </form>
+
     </div>
   </div>
 </div>

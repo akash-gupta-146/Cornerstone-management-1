@@ -28,7 +28,7 @@ export class AddCircular implements OnInit, AfterViewInit{
   
   onDueDate(e:any){
     if(new Date(e.target.value) < new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())){
-      alert("Invalid Date");
+      alert("Please choose an upcoming date from the calendar.");
       this.circular.controls['date'].patchValue(this.commonService.getTomorrow());
     }
   }
@@ -96,7 +96,6 @@ export class AddCircular implements OnInit, AfterViewInit{
   }
 
   public circularSubmit(){
-    console.log(this.circular.value);
     this.submitProgress = true;
     this.onSubmit();
   }
@@ -115,7 +114,6 @@ export class AddCircular implements OnInit, AfterViewInit{
       this.submitProgress = false;
       this.circular = this.initForm();
       $('#circularModal').modal('show');
-      console.log("Circular created successfully");
     }, (err) => {
 
     });

@@ -1,5 +1,5 @@
 <h1>Circulars
-<button type="button" class="btn btn-success btn-circle" [routerLink]="['/add-circular']">
+  <button type="button" class="btn btn-success btn-circle" [routerLink]="['/add-circular']">
   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 </button>
 </h1>
@@ -61,7 +61,7 @@
       </ul>
     </nav>-->
     <button (click)="previousCircular()" class="btn btn-danger nav-btn right" [disabled]="currentPage === 1">Previous</button>
-    <button (click)="nextCircular()" class="btn right btn-danger nav-btn" [disabled]="EmptyCirculars || noMore">Next</button>    
+    <button (click)="nextCircular()" class="btn right btn-danger nav-btn" [disabled]="EmptyCirculars || noMore">Next</button>
   </div>
 </div>
 

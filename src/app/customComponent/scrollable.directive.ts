@@ -8,6 +8,6 @@ export class Scrollable {
     private el: ElementRef) { }
   @HostListener('scroll', ['$event'])
   onScroll(event:any) {
-    console.log("scroll");
+    
   }
 }

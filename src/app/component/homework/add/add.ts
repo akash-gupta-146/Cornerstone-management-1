@@ -17,6 +17,7 @@ export class HomeworkAddComponent implements OnInit{
 
   public title: string = "New Homework";
   public homework: FormGroup;
+  public submitProgress:boolean = false;
   standards:any = [];
   subjects:any = [];
 
@@ -33,19 +34,18 @@ export class HomeworkAddComponent implements OnInit{
   file:any;
   getFile(event:any){
     this.file = event.srcElement.files[0];
-    console.log(this.file);
   }
 
   onDueDate(e:any){
     if(new Date(e.target.value) < new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())){
-      alert("Invalid Date");
+      alert("Please choose an upcoming date from the calendar.");
       this.homework.controls['dueDate'].patchValue(this.commonService.getTomorrow());
     }
   }
 
   public initForm() {
     this.homework = new FormGroup({
-      description: new FormControl('', [Validators.required, Validators.maxLength(250)]),
+      description: new FormControl('', [Validators.required]),
       standardId: new FormControl('', [Validators.required]),
       subjectId: new FormControl('', [Validators.required]),
       dueDate: new FormControl(this.commonService.getTomorrow(), [Validators.required]),
@@ -84,14 +84,15 @@ export class HomeworkAddComponent implements OnInit{
   }
 
   submitHomework(){
+    this.submitProgress = true;
     let formData = new FormData();
     formData.append('description',this.homework.value['description']);
     formData.append('standardId',this.homework.value['standardId']);
     formData.append('subjectId',this.homework.value['subjectId']);
     formData.append('dueDate',this.homework.value['dueDate']);
     formData.append('file', this.file);
-    this.saveHomework(formData);  
-    console.log(formData);  
+    this.saveHomework(formData); 
+    this.submitProgress = false;
   }
 
   // public presentActionSheet() {
