@@ -24,7 +24,7 @@
         <div class="col-sm-6">{{c.priorityName}}</div>
       </div>-->
       <div class="row">
-        <img class="image" [attr.src]="fileUrl + c.studentPicUrl" style="border-radius:50% !important">
+        <img class="image" [attr.src]="fileUrl + c.studentPicUrl">
       </div>
       <div class="row name">{{c.studentName}}</div>
       <div class="row class">{{c.studentStandardName}}</div><hr class="style-line">
@@ -50,31 +50,35 @@
         <h4 class="modal-title" id="gridSystemModalLabel">{{selectedComplaint.title}}</h4>
       </div>
       <div class="modal-body card-modal" >
-        
-        <div class="row modal-heading" style="margin-right:-15px;margin-left:-15px">
+        <div class="row first-row">
+          <div class="col-sm-6">
+              <div class="badge">{{selectedComplaint.statusName}}</div>
+          </div>
+          <div class="col-sm-6">
+          <div class="row badge" *ngIf="selectedComplaint.assignedEmployeeName"><span class="empName">@{{selectedComplaint.assignedEmployeeName}}</span></div>
+          </div>
+        </div>
+        <div class="row modal-heading">
           <div class="col-sm-4">
-            <div class="row comment-modal">
-            <label class="heading">Comments</label>
-            <div class="result">4</div>
-            </div><br>
-            <div class="row status-modal">
-              <label class="heading">Status</label><br>
-              <div class="result badge">{{selectedComplaint.statusName}}</div>
+            <div class="vertical-middle">
+              <label class="heading">Comments</label>
+              <div>4</div>
             </div>
           </div>
           <div class="col-sm-4"><img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
           <div class="col-sm-4">
-            <div class="row" *ngIf="selectedComplaint.assignedEmployeeName">@{{selectedComplaint.assignedEmployeeName}}</div><br>
-            <div class="row priority-modal"><label class="heading">Priority</label><div>{{selectedComplaint.priorityName}}</div></div>
+            <div class="vertical-middle"> 
+              <div>{{selectedComplaint.priorityName}}</div><label class="heading">Priority</label>
+            </div>
           </div>
           
         </div>
         <div class="row modal-name">{{selectedComplaint.studentName}}
           <div class="modal-class">{{selectedComplaint.studentStandardName}}</div>
         </div>
-        <div class="row modal-description" style="align:left;margin-left:10px;margin-right:10px;">
-          <div class="row">{{selectedComplaint.description}}</div>
-          <div class="row " style="text-align:left"><label class="heading " >Root Cause  </label><span class="result"> {{selectedComplaint.rca}}</span></div>
+        <div class="row modal-description">
+          <div class="row " ><label class="heading" >Description : </label><span > {{selectedComplaint.description}}</span></div>
+          <div class="row" ><label class="heading " >Root Cause : </label><span > {{selectedComplaint.rca}}</span></div>
         </div>
         <hr class="style-line">
         <div class="row complaint-category">

@@ -132,7 +132,7 @@ a{
     box-shadow: 0px 2px 5px #c7c1c1, -2px 4px 5px #c7c1c1, 10px 8px 15px #c7c1c1;
     float: left;
     font-family: sans-serif;
-    font-weight: 600;
+    font-weight: 200;
     font-size: 15px;
     text-align: center;
     
@@ -232,7 +232,6 @@ hr.style-line {
     background-color: #3a3838;
     color: white;
 }
-
 .modal-image{
     display: block;
     margin: auto;
@@ -242,7 +241,7 @@ hr.style-line {
     height: 120px;
 }
 .modal-name{
-    font-size: 130%;
+    font-size: 22px;
 }
 
 .modal-class{

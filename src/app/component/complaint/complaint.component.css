@@ -225,21 +225,12 @@ h1{
     font-weight: bold;
     letter-spacing: 0.1em;
 }
-
-
-
-/*modal for card*/
 .card-btn{
     width: 100%;
     border-radius: 25px;
 }
-
-
-/*modal for card end*/
-
-
 .heading{
-    font-size: 12px;
+    font-size: 10px;
     color: #ea212e;
 }
 
@@ -249,4 +240,30 @@ h1{
 
 .description{
     padding: 10px;
+
+}
+
+.modal-description{
+    text-align: left;
+    padding: 5px 30px;
+}
+.result{
+    font-size: 22px;
+}
+.badge{
+    border-radius: 20px !important;
+}
+.first-row{
+    background-color: #3a3838;
+    color: white;
+    padding:10px 30px;
+}
+.empName{
+    float: right;
+}
+.vertical-middle{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+    
 }
