@@ -16,7 +16,6 @@ var homework_service_1 = require("../../../providers/homework.service");
 var CurrentHomework = (function () {
     function CurrentHomework(homeworkService) {
         this.homeworkService = homeworkService;
-        this.fileUrl = localStorage.getItem("fileUrl") + "/";
         this.title = "Homework";
         this.icon = "book";
         this.currentPage = 1;
@@ -27,6 +26,7 @@ var CurrentHomework = (function () {
         this.noMore = false;
     }
     CurrentHomework.prototype.ngOnInit = function () {
+        this.fileUrl = localStorage.getItem("fileUrl") + "/";
         this.getHomeworks();
     };
     CurrentHomework.prototype.getHomeworks = function () {
@@ -73,12 +73,16 @@ var CurrentHomework = (function () {
         this.currentPage += 1;
         this.getHomeworks();
     };
+    CurrentHomework.prototype.seletToExpand = function (a) {
+        this.selectedHomework = a;
+    };
     return CurrentHomework;
 }());
 CurrentHomework = __decorate([
     core_1.Component({
         selector: 'current-homework',
         templateUrl: './homework.html',
+        styleUrls: ['./../homework.component.css']
     }),
     __metadata("design:paramtypes", [homework_service_1.HomeworkService])
 ], CurrentHomework);

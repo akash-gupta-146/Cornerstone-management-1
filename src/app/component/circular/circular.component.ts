@@ -14,12 +14,15 @@ export class CircularComponent implements OnInit {
   public circulars:any;
   private EmptyCirculars: boolean = false;
   public loader:boolean = false;
+  public fileUrl: string;
+  public selectedCircular:any;
 
   constructor(private circularService: CircularService) {
     
   }
 
   ngOnInit() {
+    this.fileUrl = localStorage.getItem("fileUrl") + "/";
     this.getCirculars();
   }
 
@@ -68,6 +71,10 @@ export class CircularComponent implements OnInit {
 
   //   })
   // }
+
+ public seletToExpand(circular:any){
+    this.selectedCircular = circular;
+  }
 
   // public doRefresh(refresher) {
   //   setTimeout(() => {

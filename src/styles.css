@@ -117,7 +117,13 @@ a{
     box-shadow: 0px 5px 12px #616161;
     border-radius: 100%;
 }
-
+.btn-danger{
+    background-color: #c9302c !important;
+}
+.btn-danger:hover{
+    color: #c9302c !important;
+    background-color: white !important;
+}
 /*card*/
 .card{
     margin: 3% 1% 0% 2%;
@@ -135,8 +141,11 @@ a{
          box-shadow: 0px 2px 5px #c7c1c1, -2px 6px 8px #cec7c7, 15px 7px 15px #c7c1c1;
 }
 .image{
-    align-content: center;
-    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 120px;
+    height: 120px;
     border-radius: 100% !important;
 }
 
@@ -211,3 +220,34 @@ hr.style-line {
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
 }
+
+#myModal-card{
+    padding: 10px;
+}
+.card-modal{
+    padding-top: 0;
+    text-align: center;
+}
+.modal-heading,.modal-name{
+    background-color: #3a3838;
+    color: white;
+}
+
+/*modal media query*/
+@media screen and (max-width: 767px) {
+    #myModal-card{
+        width: 100%;
+    }
+ .modal-image{
+     width: 40%;
+
+}
+}
+
+@media screen and (max-width: 479px) {
+    #myModal-card{
+        width: 100%;
+    }
+    .modal-image{
+        width: 40%;
+    }

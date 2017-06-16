@@ -28,6 +28,7 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   public complaint = {      
     title: ""
   } 
+  public fileUrl: string;
   public url: string = "";
   public status: string = "";   
   constructor(public cs: ComplaintService,
@@ -49,7 +50,8 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngOnInit() {    
+  ngOnInit() { 
+    this.fileUrl = localStorage.getItem("fileUrl") + "/";    
     this.fetchComplaints();
     this.getEditInfo();
     this.loadForm();

@@ -18,3 +18,12 @@ h1{
   display: block;
   overflow: hidden;
 }
+
+.modal-image{
+    display: block;
+    margin: auto;
+    width: 100%;
+    border-radius: 100% !important;
+    width: 200px;
+    height: 200px;
+}

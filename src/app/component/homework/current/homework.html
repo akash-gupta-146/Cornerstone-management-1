@@ -3,39 +3,9 @@
     <!--<div class="panel-heading">Current Homework</div>-->
     <div class="panel-body" id="accordion">
       <div style="text-align: center" *ngIf="EmptyHomeworks" ><b>No Homework</b></div>
-      <!--<table class="table table-hover" *ngIf="!EmptyHomeworks" >
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Subject</th>
-            <th>Created on</th>
-            <th>Standard</th>
-            <th>Due Date</th>            
-          </tr>
-        </thead>
-        <tbody *ngFor="let a of homeworks; let i = index;" class="container-border">
-          <tr data-toggle="collapse" [attr.data-target]="'#' + a.id" data-parent="#accordion">
-            <td class="action"><a>{{a.id}}</a></td>
-            <td>{{a.subjectName}}</td>
-            <td>{{a.createdAt | date: 'shortDate'}}</td>
-            <td>{{ a.standardName }}</td>
-            <td>{{a.dueDate}} {{a.dueMonth}}</td>
-          </tr>
-          <tr [attr.id]="a.id" class="collapse">
-            <td colspan="5" style="border:none;">
-              <b>Description : </b>{{a.description}}
-              <br>
-              <span *ngIf="a.fileOriginalName">
-              <b>Attachment  : </b><a href="{{fileUrl + a.fileTimestamp}}">{{a.fileOriginalName}}</a>
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>-->
-
-            <div class="container card" *ngFor="let a of homeworks; let i = index;">
+      <div class="container card" *ngFor="let a of homeworks; let i = index;">
       <div class="row">
-        <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(c)" data-toggle="modal" data-target="#myModal-card" style="margin-bottom:10px;"></span>
+        <span class="glyphicon glyphicon-resize-full expand" (click)="seletToExpand(a,i)" data-toggle="modal" data-target="#myModal-card" style="margin-bottom:10px;"></span>
       </div>
       <!--<div class="row">
         <div class="col-sm-6" *ngIf="!complaintStatus">
@@ -43,8 +13,8 @@
         </div>
         <div class="col-sm-6">{{c.priorityName}}</div>
       </div>-->
-      <div class="row">
-        <img class="image" src="https://www.artconversation.com/core/images/default/default_avatar_large.png" style="border-radius:0px !important;width:100%">
+      <div class="row" >
+        <img class="image" [attr.src]="fileUrl + a.fileTimestamp" style="border-radius:0px !important;width:100%">
       </div>
       <!--<div class="row name">{{circular.employeeName}}</div>-->
       <div class="row class"><label class="heading">For</label>
@@ -83,8 +53,35 @@
           <li class="page-item" [ngClass]="{'disabled': EmptyHomeworks}"><a class="page-link" (click)="nextHomework()" >Next</a></li>
         </ul>
       </nav>-->
-      <button type="button" (click)="previousHomework()" [disabled]="currentPage === 1" class="btn btn-default">Previous</button>
-      <button type="button" (click)="nextHomework()" [disabled]="EmptyHomeworks || noMore" class="btn btn-default">Next</button>
+      <button type="button" (click)="previousHomework()" [disabled]="currentPage === 1" class="btn btn-danger">Previous</button>
+      <button type="button" (click)="nextHomework()" [disabled]="EmptyHomeworks || noMore" class="btn btn-danger">Next</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal-card"tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngIf="selectedHomework">
+      <div class="modal-header">
+        <h4 class="modal-title" id="gridSystemModalLabel">{{selectedHomework.subjectName}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body card-modal">
+        <div class="modal-heading">
+          <div class="row" style="padding:0;margin:0">
+            <img class="image" [attr.src]="fileUrl + selectedHomework.fileTimestamp">
+          </div>
+        </div>
+        <div class=" row modal-class" ><label>For : </label><span>{{selectedHomework.standardName}}</span></div><hr class="style-line">
+      </div>
+      <div class="row modal-description">{{selectedHomework.description}}</div><hr class="style-line">
+      <div class="row modal-date">
+        <div class="col-sm-6" ><label class="heading">Created At</label><div class="result">{{selectedHomework.createdAt | date: "shortDate"}}</div></div>
+        <div class="col-sm-6" ><label class="heading">Due date</label><div class="result">{{selectedHomework.dueDate | date: "shortDate"}}</div></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
