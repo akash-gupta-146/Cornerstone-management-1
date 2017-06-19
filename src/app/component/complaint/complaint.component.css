@@ -269,3 +269,17 @@ h1{
 .glyphicon-calendar:before{
     font-size: 30px;
 }
+
+.complaint-modal-head{
+    height:120px;
+    display:table;
+}
+
+.middle-title{
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.big-fonts{
+    font-size:25px;
+}

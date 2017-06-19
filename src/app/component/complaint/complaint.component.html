@@ -59,16 +59,19 @@
           </div>
         </div>
         <div class="row modal-heading">
-          <div class="col-sm-4">
-            <div>
+          <div class="col-sm-4 col-xs-4 complaint-modal-head">
+            <div class="middle-title">
+              <div class="big-fonts">4</div>
               <label class="heading">Comments</label>
-              <div>4</div>
             </div>
           </div>
-          <div class="col-sm-4"><img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
-          <div class="col-sm-4">
-            <div> 
-              <div>{{selectedComplaint.priorityName}}</div><label class="heading">Priority</label>
+          <div class="col-sm-4 col-xs-4 complaint-modal-head">
+            <img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl">
+          </div>
+          <div class="col-sm-4 col-xs-4 complaint-modal-head">
+            <div class="middle-title"> 
+              <div class="big-fonts">{{selectedComplaint.priorityName}}</div>
+              <label class="heading">Priority</label>
             </div>
           </div>
           
