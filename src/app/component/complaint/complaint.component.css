@@ -287,6 +287,9 @@ h1{
 
 #example-search-input{
     margin-top: 1%;
+    margin-left: auto;
+    margin-right:auto;
+    border-radius: 20px;
     text-indent:20px;
     border-radius: 4px !important;
     background-image: url(http://signpost.mywebermedia.com/wp-content/themes/wmg-signpost/images/search-icon.svg);
@@ -299,5 +302,11 @@ h1{
 }
 #example-search-input:focus{
     width: 100%;
+    border-radius: 20px !important;
     
+}
+
+.icon{
+    font-size: 15px;
+    margin-left:15px;
 }

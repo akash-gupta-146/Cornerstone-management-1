@@ -65,23 +65,24 @@
               <div>4</div>
             </div>
           </div>
-          <div class="col-sm-4"><img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
-          <div class="col-sm-4 coloumn-middle">
+          
+          <div class="col-sm-4 coloumn-middle" style="float:right"> 
             <div class="align-middle"> 
               <div>{{selectedComplaint.priorityName}}</div><label class="heading">Priority</label>
             </div>
           </div>
-          
+          <div class="col-sm-4"><img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
         </div>
         <div class="row modal-name">{{selectedComplaint.studentName}}
           <div class="modal-class">{{selectedComplaint.studentStandardName}}</div>
         </div>
         <div class="row modal-description">
-          <div class="row " ><label class="heading" >Description : </label><span > {{selectedComplaint.description}}</span></div>
-          <div class="row" ><label class="heading " >Root Cause : </label><span > {{selectedComplaint.rca}}</span></div>
+          <div class="row " ><label class="" >Description : </label><span > {{selectedComplaint.description}}</span></div>
+          <div class="row" ><label class="" >Root Cause : </label><span > {{selectedComplaint.rca}}</span></div>
         </div>
         <hr class="style-line">
         <div class="row complaint-category">
+          <div class="col-sm-2 col-xs-2"><img src="https://cdn4.iconfinder.com/data/icons/hr-recruitment-management-part-3/360/opinion_feedback_comment_employee_staff_complain-128.png" class="complaint-icon"></div>
           <div class="col-sm-5 col-xs-5">
               <label class="heading">Complaint-Category</label>
               <div class="result">{{selectedComplaint.againstCategoryName}}</div>
@@ -90,25 +91,24 @@
             <label class="heading">Complaint-Against</label>
             <div class="result">{{selectedComplaint.againstEmployeeNam}}<div *ngIf="!selectedComplaint.againstEmployeeNam">-</div></div>
           </div>
-          <div class="col-sm-2 col-xs-2"><img src="https://cdn4.iconfinder.com/data/icons/hr-recruitment-management-part-3/360/opinion_feedback_comment_employee_staff_complain-128.png" class="complaint-icon"></div>
-        </div><hr class="style-line">
+         </div><hr class="style-line">
         <div class="row">
+          <div class="col-sm-2 col-xs-2"><i class="glyphicon glyphicon-calendar"></i></div>
           <div class="col-sm-5 col-xs-5" ><label class="heading">Created At</label><div class="result">{{selectedComplaint.createdAt | date: "shortDate"}}</div></div>
           <div class="col-sm-5 col-xs-5"><label class="heading">Closed On</label><div class="result"*ngIf="selectedComplaint.closedOn">{{selectedComplaint.closedOn | date: "shortDate"}}</div><div *ngIf="!selectedComplaint.closedOn" style="font-weight:700">-</div></div>
-          <div class="col-sm-2 col-xs-2"><i class="glyphicon glyphicon-calendar"></i></div>
         </div>
       </div>
       <div class="modal-footer">
         <div class="row">
           <div class="col-sm-4 col-xs-4"> 
             <button [ngClass]="{'disabled-click' : selectedComplaint.statusId == 4}"(click)="selectComplaint(c,in)" data-toggle="modal" data-target="#myModal"
-              class="btn btn-danger modal-btn " data-dismiss="modal">Edit</button>
+              class="btn btn-danger modal-btn " data-dismiss="modal">Edit<i class="glyphicon glyphicon-pencil icon"></i></button>
           </div>
           <div class="col-sm-4 col-xs-4">
-            <button onclick="$('.panel.panel-chat').show();"  (click)="getComplaintCommentById(c)" class="btn btn-danger modal-btn" data-dismiss="modal" >Comment</button>
+            <button onclick="$('.panel.panel-chat').show();"  (click)="getComplaintCommentById(c)" class="btn btn-danger modal-btn" data-dismiss="modal" >Comment<i class="glyphicon glyphicon-comment icon"></i></button>
           </div>
           <div class="col-sm-4 col-xs-4">
-            <button type="button" class="btn btn-danger modal-btn" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger modal-btn" data-dismiss="modal">Close<i class="glyphicon glyphicon-remove icon"></i></button>
           </div>
         </div>
       </div>
