@@ -261,9 +261,11 @@ h1{
 .empName{
     float: right;
 }
-.vertical-middle{
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-    
+.complaint-icon{
+    width: 50px;
+    height: auto;
+}
+
+.glyphicon-calendar:before{
+    font-size: 30px;
 }

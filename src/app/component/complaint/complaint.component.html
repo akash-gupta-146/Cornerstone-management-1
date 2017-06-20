@@ -60,14 +60,14 @@
         </div>
         <div class="row modal-heading">
           <div class="col-sm-4">
-            <div class="vertical-middle">
+            <div>
               <label class="heading">Comments</label>
               <div>4</div>
             </div>
           </div>
           <div class="col-sm-4"><img  class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
           <div class="col-sm-4">
-            <div class="vertical-middle"> 
+            <div> 
               <div>{{selectedComplaint.priorityName}}</div><label class="heading">Priority</label>
             </div>
           </div>
@@ -82,18 +82,20 @@
         </div>
         <hr class="style-line">
         <div class="row complaint-category">
-          <div class="col-sm-6">
-            <label class="heading">Complaint-Category</label>
-            <div class="result">{{selectedComplaint.againstCategoryName}}</div>
+          <div class="col-sm-5 col-xs-5">
+              <label class="heading">Complaint-Category</label>
+              <div class="result">{{selectedComplaint.againstCategoryName}}</div>
           </div>
-          <div class="col-sm-6" >
+          <div class="col-sm-5 col-xs-5" >
             <label class="heading">Complaint-Against</label>
             <div class="result">{{selectedComplaint.againstEmployeeNam}}<div *ngIf="!selectedComplaint.againstEmployeeNam">-</div></div>
           </div>
+          <div class="col-sm-2 col-xs-2"><img src="https://cdn4.iconfinder.com/data/icons/hr-recruitment-management-part-3/360/opinion_feedback_comment_employee_staff_complain-128.png" class="complaint-icon"></div>
         </div><hr class="style-line">
         <div class="row">
-          <div class="col-sm-6" ><label class="heading">Created At</label><div class="result">{{selectedComplaint.createdAt | date: "shortDate"}}</div></div>
-          <div class="col-sm-6" ><label class="heading">Closed On</label><div class="result">{{selectedComplaint.closedOn | date: "shortDate"}}</div></div>
+          <div class="col-sm-5 col-xs-5" ><label class="heading">Created At</label><div class="result">{{selectedComplaint.createdAt | date: "shortDate"}}</div></div>
+          <div class="col-sm-5 col-xs-5"><label class="heading">Closed On</label><div class="result"*ngIf="selectedComplaint.closedOn">{{selectedComplaint.closedOn | date: "shortDate"}}</div><div *ngIf="!selectedComplaint.closedOn" style="font-weight:700">-</div></div>
+          <div class="col-sm-2 col-xs-2"><i class="glyphicon glyphicon-calendar"></i></div>
         </div>
       </div>
       <div class="modal-footer">
@@ -259,4 +261,5 @@
     </form>
   </div>
 </div>
+
 

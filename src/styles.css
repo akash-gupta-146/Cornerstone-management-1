@@ -103,9 +103,7 @@ a{
 .logout-icon{
     font-size: 30px;
 }
-.logout{
 
-}
 .logo-list{
     position: absolute !important;
     right:10px;;
@@ -251,6 +249,7 @@ hr.style-line {
 @media screen and (max-width: 767px) {
     #myModal-card{
         width: 100%;
+        
     }
  .modal-image{
      width: 80px;
