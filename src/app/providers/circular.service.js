@@ -18,8 +18,9 @@ require("rxjs/add/observable/throw");
 var app_constant_1 = require("./app.constant");
 var default_header_service_1 = require("./default.header.service");
 var CircularService = (function () {
-    function CircularService(http, con) {
+    function CircularService(http, htttp, con) {
         this.http = http;
+        this.htttp = htttp;
         this.con = con;
         this.getUrl();
     }
@@ -37,7 +38,12 @@ var CircularService = (function () {
             .catch(this.handleError);
     };
     CircularService.prototype.PostCircular = function (data) {
-        return this.http.post(this.serverUrl + '/circular', data)
+        var options = new http_1.RequestOptions({
+            headers: new http_1.Headers({
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            })
+        });
+        return this.htttp.post(this.serverUrl + '/circular', data, options)
             .map(this.extractData)
             .catch(this.handleError);
     };
@@ -71,6 +77,7 @@ var CircularService = (function () {
 CircularService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [default_header_service_1.CustomHttpService,
+        http_1.Http,
         app_constant_1.Configuration])
 ], CircularService);
 exports.CircularService = CircularService;

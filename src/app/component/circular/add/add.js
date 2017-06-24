@@ -42,6 +42,8 @@ var AddCircular = (function () {
             description: new forms_1.FormControl('', [forms_1.Validators.required]),
             date: new forms_1.FormControl(this.commonService.getTomorrow(), [forms_1.Validators.required]),
             circularTypeId: new forms_1.FormControl('', []),
+            file: new forms_1.FormControl('')
+            // standardIds: new FormControl([], [Validators.required])
         });
     };
     AddCircular.prototype.getStandards = function () {
@@ -90,7 +92,16 @@ var AddCircular = (function () {
     };
     AddCircular.prototype.circularSubmit = function () {
         this.submitProgress = true;
-        this.onSubmit();
+        var formData = new FormData();
+        console.log('circular', this.circular.value);
+        console.log('file', this.file);
+        formData.append('title', this.circular.value['title']);
+        formData.append('description', this.circular.value['description']);
+        formData.append('circularTypeId', this.circular.value['circularTypeId']);
+        formData.append('date', this.circular.value['date']);
+        formData.append('file', this.file);
+        this.onSubmit(formData);
+        this.submitProgress = false;
     };
     AddCircular.prototype.selectStandards = function (e) {
         var _this = this;
@@ -100,14 +111,20 @@ var AddCircular = (function () {
         });
         this.circular.controls['standardIds'].patchValue(this.stdIds);
     };
-    AddCircular.prototype.onSubmit = function () {
+    AddCircular.prototype.onSubmit = function (formData) {
         var _this = this;
-        this.circserv.PostCircular(this.circular.value).subscribe(function (res) {
+        console.log(formData);
+        this.circserv.PostCircular(formData).subscribe(function (data) {
             _this.submitProgress = false;
             _this.circular = _this.initForm();
             $('#circularModal').modal('show');
         }, function (err) {
+            console.log("err", err);
         });
+    };
+    AddCircular.prototype.getFile = function (event) {
+        this.file = event.srcElement.files[0];
+        console.log("file", this.file);
     };
     return AddCircular;
 }());
