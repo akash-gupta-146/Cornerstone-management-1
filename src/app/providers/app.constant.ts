@@ -5,19 +5,12 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class Configuration {
-
-<<<<<<< HEAD
-  public url: string = " https://cornerstone.ind-cloud.everdata.com";
-  public baseUrl: string = "https://cornerstone.ind-cloud.everdata.com/";
-  public Server: string = "https://cornerstone.ind-cloud.everdata.com/";
-=======
   // public url: string = " https://cornerstone.njs.jelastic.vps-host.net";
   // public baseUrl: string = " https://cornerstone.njs.jelastic.vps-host.net/";
   // public Server: string = " https://cornerstone.njs.jelastic.vps-host.net/";
   public url: string = " https://cornerstone.ind-cloud.everdata.com";
   public baseUrl: string = " https://cornerstone.ind-cloud.everdata.com/";
   public Server: string = " https://cornerstone.ind-cloud.everdata.com/";  
->>>>>>> 59bcf77cac9229b009223301f35e49bcbf6a981c
 
   userId:any; 
   access_token: string;

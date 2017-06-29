@@ -4,6 +4,7 @@ import { ComplaintComponent } from '../complaint/complaint.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HomeworkComponent } from '../homework/homework.component';
 import { LoggedInGuard } from '../login/login.gaurd';
+import {AppreciationComponent} from '../appreciation/appreciation.component';
 
 declare let $:any;
 
@@ -20,7 +21,8 @@ export class MainComponent implements OnInit, AfterViewInit{
       { title: 'Dashboard', component: DashboardComponent, icon: 'icons/dashboard.png', url: '/dashboard' },
       { title: 'Complaints', component: ComplaintComponent, icon: 'icons/complaint.png', url: '/complaint' },
       { title: 'Circular', component: CircularComponent , icon: 'icons/circular.png', url: '/circular'},
-      { title: 'Homework', component: HomeworkComponent, icon: 'icons/homework.png', url: '/homework/current-homework' }
+      { title: 'Homework', component: HomeworkComponent, icon: 'icons/homework.png', url: '/homework/current-homework' },
+      { title: 'Appreciation', component: AppreciationComponent, icon: 'icons/homework.png', url: '/appreciation/for-me' }
     ];
 
   constructor(public log:LoggedInGuard){

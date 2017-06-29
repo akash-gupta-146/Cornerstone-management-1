@@ -44,7 +44,7 @@ export class AddCircular implements OnInit, AfterViewInit{
       title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       date: new FormControl(this.commonService.getTomorrow(), [Validators.required]),
-      circularTypeId: new FormControl('', []),
+      circularTypeId: new FormControl('', [Validators.required]),
        file: new FormControl('')
       // standardIds: new FormControl([], [Validators.required])
     });

@@ -20,6 +20,11 @@ import { PassedHomework } from './component/homework/passed/homework';
 import { GoogleChart } from './customComponent/chart.directive';
 import { CustomLoader } from './customComponent/loader.component';
 import { AccountComponent } from './component/account/account.component';
+import {AppreciationComponent} from './component/appreciation/appreciation.component';
+import {ForMeComponent} from './component/appreciation/for-me/forme';
+import {ByMeComponent} from './component/appreciation/by-me/byme';
+import {AddEmployeeComponent} from './component/addEmployee/addEmployee.component';
+import {AddAppreciation} from './component/appreciation/add/add';
 
 /*Providers */
 import { LoggedInGuard } from './component/login/login.gaurd';
@@ -32,6 +37,11 @@ import { HomeworkService } from './providers/homework.service';
 import { ChartService } from './providers/chart.service';
 import { CircularService } from './providers/circular.service';
 import {XHRBackend, RequestOptions} from '@angular/http';
+import {AdminService} from './providers/admin.service';
+import {ValidationService} from './providers/formValidation.service';
+import { AppreciationService} from './providers/appreciation.service';
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -57,9 +67,26 @@ import {XHRBackend, RequestOptions} from '@angular/http';
     GoogleChart,
     CustomLoader,
     AccountComponent,
+    AppreciationComponent,
+    ForMeComponent,
+    ByMeComponent,
+    AddEmployeeComponent,
+    AddAppreciation,
+
   ],
-  providers: [LoggedInGuard,Configuration,CommonService,CustomHttpService,AuthService,ComplaintService,ChartService,
-              HomeworkService,CircularService,
+  providers: [
+    LoggedInGuard,
+    Configuration,
+    CommonService,
+    CustomHttpService,
+    AuthService,
+    ComplaintService,
+    ChartService,
+    HomeworkService,
+    CircularService,
+    ValidationService,
+    AdminService,
+    AppreciationService,
   {
       provide: CustomHttpService,
       useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {

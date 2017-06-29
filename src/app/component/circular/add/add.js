@@ -41,7 +41,7 @@ var AddCircular = (function () {
             title: new forms_1.FormControl('', [forms_1.Validators.required]),
             description: new forms_1.FormControl('', [forms_1.Validators.required]),
             date: new forms_1.FormControl(this.commonService.getTomorrow(), [forms_1.Validators.required]),
-            circularTypeId: new forms_1.FormControl('', []),
+            circularTypeId: new forms_1.FormControl('', [forms_1.Validators.required]),
             file: new forms_1.FormControl('')
             // standardIds: new FormControl([], [Validators.required])
         });

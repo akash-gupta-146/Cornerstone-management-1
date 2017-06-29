@@ -9,7 +9,7 @@ declare let $:any;
 @Component({
   selector: 'homework-add',
   templateUrl: './add.html',
-  //styleUrls:['../homework.component.css']
+  // styleUrls:['../homework.component.css']
   
 })
 
@@ -116,6 +116,8 @@ export class HomeworkAddComponent implements OnInit{
   // }
 
   public saveHomework(formData:any) {
+    console.log(formData);
+    console.log("file",this.file);
     // this.nl.showLoader();
     this.homeworkService.PostHomework(formData).subscribe((data) => {
       $('#homeworkModal').modal('show');
