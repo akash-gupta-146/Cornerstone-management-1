@@ -25,6 +25,13 @@ import {ForMeComponent} from './component/appreciation/for-me/forme';
 import {ByMeComponent} from './component/appreciation/by-me/byme';
 import {AddEmployeeComponent} from './component/addEmployee/addEmployee.component';
 import {AddAppreciation} from './component/appreciation/add/add';
+import { PollComponent } from './component/poll/poll.component';
+import { AddPollComponent } from './component/poll/add/add';
+import { CurrentPollComponent } from './component/poll/current/poll';
+import { ClosedPollComponent } from './component/poll/closed/poll';
+import {MessageComponent} from './component/message/message.component';
+import {NewMessageComponent} from './component/message/new/new';
+import {ViewMessageComponent} from './component/message/view/view';
 
 /*Providers */
 import { LoggedInGuard } from './component/login/login.gaurd';
@@ -40,7 +47,7 @@ import {XHRBackend, RequestOptions} from '@angular/http';
 import {AdminService} from './providers/admin.service';
 import {ValidationService} from './providers/formValidation.service';
 import { AppreciationService} from './providers/appreciation.service';
-
+import { PollService } from './providers/poll.service';
 
 @NgModule({
   imports: [
@@ -72,7 +79,13 @@ import { AppreciationService} from './providers/appreciation.service';
     ByMeComponent,
     AddEmployeeComponent,
     AddAppreciation,
-
+    PollComponent,
+    AddPollComponent,
+    CurrentPollComponent,
+    ClosedPollComponent,
+    MessageComponent,
+    NewMessageComponent, 
+    ViewMessageComponent
   ],
   providers: [
     LoggedInGuard,
@@ -87,6 +100,7 @@ import { AppreciationService} from './providers/appreciation.service';
     ValidationService,
     AdminService,
     AppreciationService,
+    PollService,
   {
       provide: CustomHttpService,
       useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
