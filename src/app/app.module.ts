@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { rootRouterConfig } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {CalendarComponent} from "./angular2-fullcalendar/src/calendar/calendar";
 
 import { AppComponent }  from './app.component';
 import { MainComponent } from './component/main/main.component';
@@ -85,7 +86,8 @@ import { PollService } from './providers/poll.service';
     ClosedPollComponent,
     MessageComponent,
     NewMessageComponent, 
-    ViewMessageComponent
+    ViewMessageComponent,
+    CalendarComponent
   ],
   providers: [
     LoggedInGuard,
