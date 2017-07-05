@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var circular_service_1 = require("../../../providers/circular.service");
-var common_service_1 = require("../../../providers/common.service");
-var common_1 = require("@angular/common");
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var circular_service_1 = require('../../../providers/circular.service');
+var common_service_1 = require('../../../providers/common.service');
+var common_1 = require('@angular/common');
 var AddCircular = (function () {
     function AddCircular(circserv, commonService, _location) {
         this.circserv = circserv;
@@ -43,7 +42,6 @@ var AddCircular = (function () {
             date: new forms_1.FormControl(this.commonService.getTomorrow(), [forms_1.Validators.required]),
             circularTypeId: new forms_1.FormControl('', [forms_1.Validators.required]),
             file: new forms_1.FormControl('')
-            // standardIds: new FormControl([], [Validators.required])
         });
     };
     AddCircular.prototype.getStandards = function () {
@@ -126,16 +124,14 @@ var AddCircular = (function () {
         this.file = event.srcElement.files[0];
         console.log("file", this.file);
     };
+    AddCircular = __decorate([
+        core_1.Component({
+            selector: 'add-circular',
+            templateUrl: './add.html'
+        }), 
+        __metadata('design:paramtypes', [circular_service_1.CircularService, common_service_1.CommonService, common_1.Location])
+    ], AddCircular);
     return AddCircular;
 }());
-AddCircular = __decorate([
-    core_1.Component({
-        selector: 'add-circular',
-        templateUrl: './add.html'
-    }),
-    __metadata("design:paramtypes", [circular_service_1.CircularService,
-        common_service_1.CommonService,
-        common_1.Location])
-], AddCircular);
 exports.AddCircular = AddCircular;
 //# sourceMappingURL=add.js.map

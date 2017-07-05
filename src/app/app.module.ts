@@ -33,6 +33,7 @@ import { ClosedPollComponent } from './component/poll/closed/poll';
 import {MessageComponent} from './component/message/message.component';
 import {NewMessageComponent} from './component/message/new/new';
 import {ViewMessageComponent} from './component/message/view/view';
+import {EventComponent} from './component/event/event.component';
 
 /*Providers */
 import { LoggedInGuard } from './component/login/login.gaurd';
@@ -49,6 +50,7 @@ import {AdminService} from './providers/admin.service';
 import {ValidationService} from './providers/formValidation.service';
 import { AppreciationService} from './providers/appreciation.service';
 import { PollService } from './providers/poll.service';
+import {EventService} from './providers/event.service';
 
 @NgModule({
   imports: [
@@ -87,7 +89,8 @@ import { PollService } from './providers/poll.service';
     MessageComponent,
     NewMessageComponent, 
     ViewMessageComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventComponent,
   ],
   providers: [
     LoggedInGuard,
@@ -103,6 +106,7 @@ import { PollService } from './providers/poll.service';
     AdminService,
     AppreciationService,
     PollService,
+    EventService,
   {
       provide: CustomHttpService,
       useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => {
