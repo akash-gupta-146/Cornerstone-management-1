@@ -25,6 +25,7 @@ import { ClosedPollComponent } from './component/poll/closed/poll';
 import {MessageComponent} from './component/message/message.component';
 import {NewMessageComponent} from './component/message/new/new';
 import {ViewMessageComponent} from './component/message/view/view';
+import {EventComponent} from './component/event/event.component'
 
 export const rootRouterConfig: Routes = [
   { path: '', redirectTo : '/dashboard', pathMatch: 'full' },
@@ -69,6 +70,7 @@ export const rootRouterConfig: Routes = [
           
         ]
       },
+      { path: 'event', component: EventComponent, canActivate: [LoggedInGuard] },
       
     
   ]},

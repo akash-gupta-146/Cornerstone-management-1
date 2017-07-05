@@ -8,15 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var Observable_1 = require("rxjs/Observable");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/map");
-require("rxjs/add/operator/catch");
-require("rxjs/add/observable/throw");
-var app_constant_1 = require("./app.constant");
-var default_header_service_1 = require("./default.header.service");
+var core_1 = require('@angular/core');
+var Observable_1 = require('rxjs/Observable');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/catch');
+require('rxjs/add/observable/throw');
+var app_constant_1 = require('./app.constant');
+var default_header_service_1 = require('./default.header.service');
 var CircularService = (function () {
     function CircularService(http, htttp, con) {
         this.http = http;
@@ -72,13 +71,11 @@ var CircularService = (function () {
         }
         return Observable_1.Observable.throw(errMsg);
     };
+    CircularService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [default_header_service_1.CustomHttpService, http_1.Http, app_constant_1.Configuration])
+    ], CircularService);
     return CircularService;
 }());
-CircularService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [default_header_service_1.CustomHttpService,
-        http_1.Http,
-        app_constant_1.Configuration])
-], CircularService);
 exports.CircularService = CircularService;
 //# sourceMappingURL=circular.service.js.map

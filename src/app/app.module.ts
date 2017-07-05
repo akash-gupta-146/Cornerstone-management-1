@@ -33,6 +33,7 @@ import { ClosedPollComponent } from './component/poll/closed/poll';
 import {MessageComponent} from './component/message/message.component';
 import {NewMessageComponent} from './component/message/new/new';
 import {ViewMessageComponent} from './component/message/view/view';
+import {EventComponent} from './component/event/event.component';
 
 /*Providers */
 import { LoggedInGuard } from './component/login/login.gaurd';
@@ -87,7 +88,8 @@ import { PollService } from './providers/poll.service';
     MessageComponent,
     NewMessageComponent, 
     ViewMessageComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventComponent,
   ],
   providers: [
     LoggedInGuard,
