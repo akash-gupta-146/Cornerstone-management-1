@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var circular_service_1 = require("../../../providers/circular.service");
-var common_service_1 = require("../../../providers/common.service");
-var common_1 = require("@angular/common");
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var circular_service_1 = require('../../../providers/circular.service');
+var common_service_1 = require('../../../providers/common.service');
+var common_1 = require('@angular/common');
 var AddCircular = (function () {
     function AddCircular(circserv, commonService, _location) {
         this.circserv = circserv;
@@ -41,7 +40,8 @@ var AddCircular = (function () {
             title: new forms_1.FormControl('', [forms_1.Validators.required]),
             description: new forms_1.FormControl('', [forms_1.Validators.required]),
             date: new forms_1.FormControl(this.commonService.getTomorrow(), [forms_1.Validators.required]),
-            circularTypeId: new forms_1.FormControl('', []),
+            circularTypeId: new forms_1.FormControl('', [forms_1.Validators.required]),
+            file: new forms_1.FormControl('')
         });
     };
     AddCircular.prototype.getStandards = function () {
@@ -90,7 +90,16 @@ var AddCircular = (function () {
     };
     AddCircular.prototype.circularSubmit = function () {
         this.submitProgress = true;
-        this.onSubmit();
+        var formData = new FormData();
+        console.log('circular', this.circular.value);
+        console.log('file', this.file);
+        formData.append('title', this.circular.value['title']);
+        formData.append('description', this.circular.value['description']);
+        formData.append('circularTypeId', this.circular.value['circularTypeId']);
+        formData.append('date', this.circular.value['date']);
+        formData.append('file', this.file);
+        this.onSubmit(formData);
+        this.submitProgress = false;
     };
     AddCircular.prototype.selectStandards = function (e) {
         var _this = this;
@@ -100,25 +109,29 @@ var AddCircular = (function () {
         });
         this.circular.controls['standardIds'].patchValue(this.stdIds);
     };
-    AddCircular.prototype.onSubmit = function () {
+    AddCircular.prototype.onSubmit = function (formData) {
         var _this = this;
-        this.circserv.PostCircular(this.circular.value).subscribe(function (res) {
+        console.log(formData);
+        this.circserv.PostCircular(formData).subscribe(function (data) {
             _this.submitProgress = false;
             _this.circular = _this.initForm();
             $('#circularModal').modal('show');
         }, function (err) {
+            console.log("err", err);
         });
     };
+    AddCircular.prototype.getFile = function (event) {
+        this.file = event.srcElement.files[0];
+        console.log("file", this.file);
+    };
+    AddCircular = __decorate([
+        core_1.Component({
+            selector: 'add-circular',
+            templateUrl: './add.html'
+        }), 
+        __metadata('design:paramtypes', [circular_service_1.CircularService, common_service_1.CommonService, common_1.Location])
+    ], AddCircular);
     return AddCircular;
 }());
-AddCircular = __decorate([
-    core_1.Component({
-        selector: 'add-circular',
-        templateUrl: './add.html'
-    }),
-    __metadata("design:paramtypes", [circular_service_1.CircularService,
-        common_service_1.CommonService,
-        common_1.Location])
-], AddCircular);
 exports.AddCircular = AddCircular;
 //# sourceMappingURL=add.js.map

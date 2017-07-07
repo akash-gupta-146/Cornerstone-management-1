@@ -15,6 +15,9 @@
           <span>{{50 - circular.value.title.length}}</span>
         </span>
         <input type="text" class="form-control" id="title" maxlength="50" formControlName="title" placeholder="Add Title">
+        <div [hidden]="circular.controls.title.untouched || circular.controls.title.prestine || circular.controls.title.valid" class="alert alert-warning">
+          This field is required
+        </div>
       </div>
       <div class="form-group">
         <label for="description">Description</label>
@@ -22,6 +25,9 @@
            <span>{{2000 - circular.value.description.length}}</span>
         </span>
         <textarea class="form-control" id="exampleTextarea" name="description" maxlength="2000" formControlName="description" rows="3" placeholder="Add Description"></textarea>
+        <div [hidden]="circular.controls.description.untouched || circular.controls.description.prestine || circular.controls.description.valid" class="alert alert-warning">
+          This field is required
+        </div>
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12">
@@ -36,14 +42,31 @@
             <select class="form-control" id="circularTypeId" name="circularTypeId" formControlName="circularTypeId" (ngModelChange)="onCircularType($event)">
               <option *ngFor="let bx of circularType" [value]="bx.id">{{bx.name}}</option>
             </select>
-          </div>
-        </div>        
+            <div>
+              <div [hidden]="circular.controls.circularTypeId.valid || circular.controls.circularTypeId.untouched" class="alert alert-warning">This field is required</div>
+            </div>
+          </div>   
+        </div>     
+      </div>
+
+      <div class="row">
+
+             <div class="col-lg-6">
+    <div class="form-group">
+      <div>Attachment</div>
+        <input type="file" class="form-control-file" formControlName="file" id="exampleInputFile" aria-describedby="fileHelp" (change)="getFile($event)" >
+        <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
+      </div>
+      </div>
       </div>
       <div class="form-group" *ngIf="circular.value.circularTypeId == 2 ">
         <label for="standardIds">Select Class</label>
         <select class="form-control" id="standardIds" name="standardIds" [(ngModel)]="standard" (ngModelChange)="selectStandards($event)" [ngModelOptions]="{standalone: true}" multiple>
           <option *ngFor="let a of standards" [ngValue]="a"> {{a.name}}</option>
         </select>
+        <div>
+          <!--<div [hidden]="circular.controls.standard.valid || circular.controls.standard.untouched" class="alert alert-warning">This field is required</div>-->
+        </div> 
       </div>
       <button type="submit" class="btn btn-success" [disabled]="!circular.valid">Submit</button>
     </form>

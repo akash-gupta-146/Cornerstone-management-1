@@ -8,14 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-require("rxjs/add/operator/toPromise");
+var core_1 = require('@angular/core');
+require('rxjs/add/operator/toPromise');
 var Configuration = (function () {
     function Configuration() {
-        this.url = " https://cornerstone.njs.jelastic.vps-host.net";
-        this.baseUrl = " https://cornerstone.njs.jelastic.vps-host.net/";
-        this.Server = " https://cornerstone.njs.jelastic.vps-host.net/";
+        // public url: string = " https://cornerstone.njs.jelastic.vps-host.net";
+        // public baseUrl: string = " https://cornerstone.njs.jelastic.vps-host.net/";
+        // public Server: string = " https://cornerstone.njs.jelastic.vps-host.net/";
+        this.url = " https://cornerstone.ind-cloud.everdata.com";
+        this.baseUrl = " https://cornerstone.ind-cloud.everdata.com/";
+        this.Server = " https://cornerstone.ind-cloud.everdata.com/";
     }
     // set access_token after user login
     Configuration.prototype.setAccessToken = function () {
@@ -31,11 +33,11 @@ var Configuration = (function () {
         this.Server = this.baseUrl + this.role + "/" + this.userId;
         return this.userId;
     };
+    Configuration = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], Configuration);
     return Configuration;
 }());
-Configuration = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], Configuration);
 exports.Configuration = Configuration;
 //# sourceMappingURL=app.constant.js.map

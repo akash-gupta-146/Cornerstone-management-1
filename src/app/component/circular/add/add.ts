@@ -17,6 +17,7 @@ export class AddCircular implements OnInit, AfterViewInit{
   public newCircular:any;
   public standards:any;
   public circularType:any;
+  public file:any;
   public submitProgress:boolean = false;
   constructor(private circserv: CircularService,
               private commonService: CommonService,
@@ -43,7 +44,8 @@ export class AddCircular implements OnInit, AfterViewInit{
       title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       date: new FormControl(this.commonService.getTomorrow(), [Validators.required]),
-      circularTypeId: new FormControl('', []),
+      circularTypeId: new FormControl('', [Validators.required]),
+       file: new FormControl('')
       // standardIds: new FormControl([], [Validators.required])
     });
   }
@@ -97,7 +99,17 @@ export class AddCircular implements OnInit, AfterViewInit{
 
   public circularSubmit(){
     this.submitProgress = true;
-    this.onSubmit();
+       
+    let formData = new FormData();
+    console.log('circular',this.circular.value);
+    console.log('file',this.file);
+    formData.append('title',this.circular.value['title']);
+    formData.append('description',this.circular.value['description']);
+    formData.append('circularTypeId',this.circular.value['circularTypeId']);
+    formData.append('date',this.circular.value['date']);
+    formData.append('file', this.file);
+    this.onSubmit(formData);
+    this.submitProgress = false;
   }
   stdIds:any = [];
   standard:any;
@@ -109,14 +121,22 @@ export class AddCircular implements OnInit, AfterViewInit{
     this.circular.controls['standardIds'].patchValue(this.stdIds);
   }
 
-  public onSubmit() {
-    this.circserv.PostCircular(this.circular.value).subscribe((res) => {
+  public onSubmit(formData: any) {
+    console.log(formData);
+    this.circserv.PostCircular(formData).subscribe((data) => {
       this.submitProgress = false;
       this.circular = this.initForm();
       $('#circularModal').modal('show');
     }, (err) => {
 
+      console.log("err",err);
+
     });
+  }
+   
+  getFile(event:any){
+    this.file = event.srcElement.files[0];
+    console.log("file",this.file);
   }
 
 }

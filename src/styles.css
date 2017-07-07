@@ -127,6 +127,7 @@ a{
     margin: 3% 1% 0% 2%;
     padding:  2% 4% ;
     width: 22%;
+    border:2px groove rgba(74, 76, 71, 0.35);
     box-shadow: 0px 2px 5px #c7c1c1, -2px 4px 5px #c7c1c1, 10px 8px 15px #c7c1c1;
     float: left;
     font-family: sans-serif;
@@ -267,7 +268,7 @@ hr.style-line {
         width: 50px;
     }
   /* modal media query end*/
-
+}
 .footer{
     position:absolute;
     bottom:5px;
